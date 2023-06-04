@@ -1,0 +1,48 @@
+name: rockers_app
+description: Rockers Rock Music App
+publish_to: "none"
+version: 2.0.0
+
+environment:
+  sdk: ">=2.19.6 <3.0.0"
+
+dependencies:
+  cloud_firestore: ^4.6.0
+  firebase_auth: ^4.6.2
+  firebase_core: ^2.11.0
+  flutter:
+    sdk: flutter
+  flutter_dotenv: ^5.1.0
+  flutter_riverpod: ^2.3.6
+  go_router: ^7.1.1
+  google_fonts: ^4.0.4
+  google_sign_in: ^6.1.3
+  intl: ^0.18.1
+  share_plus: ^7.0.2
+  shared_preferences: ^2.1.1
+  youtube_explode_dart: ^1.12.4
+  youtube_player_iframe: ^4.0.4
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - .env
+
+  fonts:
+    - family: Kollektif
+      fonts:
+        - asset: assets/fonts/Kollektif/Kollektif-Bold.ttf
+        - asset: assets/fonts/Kollektif/Kollektif-BoldItalic.ttf
+        - asset: assets/fonts/Kollektif/Kollektif-Italic.ttf
+        - asset: assets/fonts/Kollektif/Kollektif.ttf
+    - family: ManoNegra
+      fonts:
+        - asset: assets/fonts/ManoNegra/ManoNegra-Bold.ttf
+        - asset: assets/fonts/ManoNegra/ManoNegra-Regular.ttf
