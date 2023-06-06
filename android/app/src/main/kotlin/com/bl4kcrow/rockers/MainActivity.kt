@@ -1,4 +1,4 @@
-package com.bl4kcrow.rockers_app
+package com.bl4kcrow.rockers
 
 import io.flutter.embedding.android.FlutterActivity
 

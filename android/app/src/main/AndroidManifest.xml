@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bl4kcrow.rockers_app">
+    package="com.bl4kcrow.rockers">
    <application
         android:label="rockers_app"
         android:name="${applicationName}"
