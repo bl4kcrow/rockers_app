@@ -23,12 +23,19 @@ class TrendingNotifier extends StateNotifier<List<Trending>> {
     setAsCurrentPlaylist();
   }
 
-  Future<void> nextLoad() async {
+  Future<bool> nextLoad() async {
+    bool isThereNextLoad = false;
+    
     final List<Trending> nextTrending =
         await ref.watch(trendingRepositoryProvider).nextLoad();
 
-    state = [...state, ...nextTrending];
-    setAsCurrentPlaylist();
+    if (nextTrending.isNotEmpty) {
+      state = [...state, ...nextTrending];
+      setAsCurrentPlaylist();
+      isThereNextLoad = true;
+    }
+
+    return isThereNextLoad;
   }
 
   void setAsCurrentPlaylist() {

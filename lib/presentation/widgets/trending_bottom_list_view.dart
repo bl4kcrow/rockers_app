@@ -19,6 +19,8 @@ class _TrendingHorizontalListViewState
     extends ConsumerState<TrendingBottomListView> {
   final ScrollController scrollController = ScrollController();
 
+  bool isNextLoad = false;
+
   @override
   void initState() {
     super.initState();
@@ -28,7 +30,7 @@ class _TrendingHorizontalListViewState
   void _scrollListener() async {
     if (scrollController.offset >= scrollController.position.maxScrollExtent &&
         !scrollController.position.outOfRange) {
-      await ref.read(trendingProvider.notifier).nextLoad();
+      isNextLoad = await ref.read(trendingProvider.notifier).nextLoad();
     }
   }
 
@@ -46,18 +48,20 @@ class _TrendingHorizontalListViewState
     final List<Trending> trendingSongs = ref.watch(trendingProvider);
     final currentSong = ref.watch(currentSongProvider);
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final currentPlaylist = ref.read(currentPlaylistProvider);
-      final currentSongIndex = currentPlaylist.songs.indexWhere(
-        (song) => song.id == currentSong.id,
-      );
+    if (isNextLoad == false) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final currentPlaylist = ref.read(currentPlaylistProvider);
+        final currentSongIndex = currentPlaylist.songs.indexWhere(
+          (song) => song.id == currentSong.id,
+        );
 
-      scrollController.animateTo(
-        (currentSongIndex + 1) * (screenSize.width * 0.55 + Insets.medium),
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    });
+        scrollController.animateTo(
+          (currentSongIndex + 1) * (screenSize.width * 0.55 + Insets.medium),
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        );
+      });
+    }
 
     return ListView.separated(
       controller: scrollController,
