@@ -51,7 +51,7 @@ class VideoPlayerNotifier {
     if (currentSongIndex + 1 < currentPlaylist.songs.length) {
       final nextSong = currentPlaylist.songs.elementAt(currentSongIndex + 1);
 
-      await cueVideoById(nextSong.videoId);
+      await loadVideoById(nextSong.videoId);
       ref.read(currentSongProvider.notifier).update(nextSong);
       ref
           .read(videoMetaDataProvider.notifier)
@@ -71,7 +71,7 @@ class VideoPlayerNotifier {
       final previousSong =
           currentPlaylist.songs.elementAt(currentSongIndex - 1);
 
-      await cueVideoById(previousSong.videoId);
+      await loadVideoById(previousSong.videoId);
       ref.read(currentSongProvider.notifier).update(previousSong);
       ref
           .read(videoMetaDataProvider.notifier)

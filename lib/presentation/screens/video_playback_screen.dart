@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:share_plus/share_plus.dart';
@@ -24,13 +25,15 @@ class VideoPlaybackScreen extends ConsumerStatefulWidget {
 }
 
 class _VideoPlaybackScreenState extends ConsumerState<VideoPlaybackScreen> {
-  late final StreamSubscription<YoutubePlayerValue> _playerControllerListener;
+  late final StreamSubscription<YoutubePlayerValue> playerControllerListener;
+  late final VideoPlayerNotifier playerProvider;
 
   @override
   void initState() {
     super.initState();
+    playerProvider = ref.read(videoPlayerProvider);
 
-    _playerControllerListener = ref
+    playerControllerListener = ref
         .read(
           videoPlayerProvider,
         )
@@ -42,11 +45,20 @@ class _VideoPlaybackScreenState extends ConsumerState<VideoPlaybackScreen> {
         }
       },
     );
+
+    playerProvider.playerController.setFullScreenListener((isFullscreen) {
+      if (isFullscreen == false) {
+        SystemChrome.setEnabledSystemUIMode(
+          SystemUiMode.manual,
+          overlays: SystemUiOverlay.values,
+        );
+      }
+    });
   }
 
   @override
   void dispose() {
-    _playerControllerListener.cancel();
+    playerControllerListener.cancel();
     ref.invalidate(videoPlayerProvider);
 
     super.dispose();
@@ -54,20 +66,22 @@ class _VideoPlaybackScreenState extends ConsumerState<VideoPlaybackScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final playerProvider = ref.watch(videoPlayerProvider);
-
     final autoPlay = ref.watch(autoplayProvider);
 
     if (autoPlay == false) {
-      _playerControllerListener.pause();
-    } else if (_playerControllerListener.isPaused) {
-      _playerControllerListener.resume();
+      playerControllerListener.pause();
+    } else if (playerControllerListener.isPaused) {
+      playerControllerListener.resume();
     }
 
     return SafeArea(
       child: YoutubePlayerScaffold(
-        autoFullScreen: false,
+        autoFullScreen: true,
         controller: playerProvider.playerController,
+        defaultOrientations: const [
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.portraitDown,
+        ],
         builder: (context, videoPlayer) {
           return Scaffold(
             body: _PlayerScaffoldBody(

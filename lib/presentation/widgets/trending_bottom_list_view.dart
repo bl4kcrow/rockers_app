@@ -87,7 +87,7 @@ class _TrendingHorizontalListViewState
               Flexible(
                 child: InkWell(
                   onTap: () {
-                    ref.read(videoPlayerProvider).cueVideoById(song.videoId);
+                    ref.read(videoPlayerProvider).loadVideoById(song.videoId);
                     ref.read(currentSongProvider.notifier).update(song);
                     ref
                         .read(videoMetaDataProvider.notifier)

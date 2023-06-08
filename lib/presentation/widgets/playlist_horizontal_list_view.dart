@@ -49,7 +49,7 @@ class PlaylistHorizontalListView extends ConsumerWidget {
                 child: InkWell(
                   onTap: () {
                     ref.read(currentSongProvider.notifier).update(song);
-                    ref.read(videoPlayerProvider).cueVideoById(song.videoId);
+                    ref.read(videoPlayerProvider).loadVideoById(song.videoId);
                     ref
                         .read(videoMetaDataProvider.notifier)
                         .fetchVideoMetaData(song.videoId);
