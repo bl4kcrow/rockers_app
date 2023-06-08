@@ -29,6 +29,7 @@ class AppConstants {
   // Util constants
   static const double largeRadius = 30.0;
   static const double mediumRadius = 20.0;
+  static const double refreshDisplacement = 80.0;
   static const double smallRadius = 10.0;
   static const double textScaleFactor = 1.3;
 }

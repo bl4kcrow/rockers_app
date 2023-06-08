@@ -58,19 +58,25 @@ class _TrendingScreenState extends ConsumerState<TrendingView> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: Insets.medium),
-        child: ListView.builder(
-          controller: scrollController,
-          itemCount: trending.length,
-          itemBuilder: (
-            BuildContext context,
-            int index,
-          ) {
-            final trendingSong = trending[index];
-
-            return VideoCard(
-              song: SongMapper.trendingSongToEntity(trendingSong),
-            );
+        child: RefreshIndicator(
+          displacement: AppConstants.refreshDisplacement,
+          onRefresh: () async {
+            await ref.read(trendingProvider.notifier).initialLoad();
           },
+          child: ListView.builder(
+            controller: scrollController,
+            itemCount: trending.length,
+            itemBuilder: (
+              BuildContext context,
+              int index,
+            ) {
+              final trendingSong = trending[index];
+
+              return VideoCard(
+                song: SongMapper.trendingSongToEntity(trendingSong),
+              );
+            },
+          ),
         ),
       ),
       extendBody: true,

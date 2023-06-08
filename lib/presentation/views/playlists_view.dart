@@ -31,42 +31,48 @@ class _PlaylistsViewState extends ConsumerState<PlaylistsView> {
       appBar: AppBar(
         title: const Text(AppConstants.playlistsLabel),
       ),
-      body: ListView.builder(
-        itemCount: playlists.length,
-        itemBuilder: (context, index) {
-          return Card(
-            elevation: 2.0,
-            child: Container(
-              height: screenSize.width * 0.6,
-              padding: const EdgeInsets.fromLTRB(
-                Insets.medium,
-                Insets.small,
-                Insets.none,
-                Insets.small,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    playlists[index].name,
-                    style: textTheme.titleLarge,
-                    overflow: TextOverflow.ellipsis,
-                    textScaleFactor: AppConstants.textScaleFactor,
-                  ),
-                  Expanded(
-                    child: PlaylistHorizontalListView(
-                      songs: playlists[index].songs,
-                      rankingEnabled: playlists[index].rankingEnable,
-                      name: playlists[index].name,
-                      priority: playlists[index].priority,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
+      body: RefreshIndicator(
+        displacement: AppConstants.refreshDisplacement,
+        onRefresh: () async {
+          ref.read(playlistsProvider.notifier).initialLoad();
         },
+        child: ListView.builder(
+          itemCount: playlists.length,
+          itemBuilder: (context, index) {
+            return Card(
+              elevation: 2.0,
+              child: Container(
+                height: screenSize.width * 0.6,
+                padding: const EdgeInsets.fromLTRB(
+                  Insets.medium,
+                  Insets.small,
+                  Insets.none,
+                  Insets.small,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      playlists[index].name,
+                      style: textTheme.titleLarge,
+                      overflow: TextOverflow.ellipsis,
+                      textScaleFactor: AppConstants.textScaleFactor,
+                    ),
+                    Expanded(
+                      child: PlaylistHorizontalListView(
+                        songs: playlists[index].songs,
+                        rankingEnabled: playlists[index].rankingEnable,
+                        name: playlists[index].name,
+                        priority: playlists[index].priority,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
       ),
       extendBodyBehindAppBar: true,
     );
