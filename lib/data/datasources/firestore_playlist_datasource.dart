@@ -16,7 +16,14 @@ class FirestorePlaylistDatasource implements PlaylistDatasource {
     final List<Playlist> playLists = [];
 
     final querySnapshot =
-        await _playlistCollection.limit(_queryLimit).orderBy('priority').get();
+        await _playlistCollection
+        .limit(_queryLimit)
+        .where(
+          'isActive',
+          isEqualTo: true,
+        )
+        .orderBy('priority')
+        .get();
 
     playLists.addAll(
       querySnapshot.docs
@@ -42,6 +49,10 @@ class FirestorePlaylistDatasource implements PlaylistDatasource {
     if (_lastDocumentSnapshot != null) {
       final querySnapshot = await _playlistCollection
           .limit(_queryLimit)
+          .where(
+            'isActive',
+            isEqualTo: true,
+          )
           .orderBy('priority')
           .startAfterDocument(_lastDocumentSnapshot!)
           .get();
