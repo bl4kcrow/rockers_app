@@ -124,7 +124,9 @@ class _PlayerScaffoldBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final Size screenSize = MediaQuery.of(context).size;
-    final currentSong = ref.watch(currentSongProvider);
+    final Song currentSong = ref.watch(currentSongProvider);
+    final bool isRankingEnabled =
+        ref.watch(currentPlaylistProvider).rankingEnable;
 
     return OrientationBuilder(
       builder: (context, orientation) {
@@ -150,14 +152,33 @@ class _PlayerScaffoldBody extends ConsumerWidget {
                         spacing: Insets.medium,
                         children: [
                           const VideoMetaDataInfo(),
-                          if (currentSong.trendType != null) ...[
-                            _TrendType(currentSong: currentSong),
-                          ] else if (currentSong.position != null) ...[
-                            SizedBox(
-                              width: screenSize.width * 0.4,
-                              child: _SongPosition(currentSong: currentSong),
-                            )
-                          ],
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              if (currentSong.trendType != null) ...[
+                                _TrendType(
+                                  type: currentSong.trendType!,
+                                ),
+                              ] else if (currentSong.position != null &&
+                                  isRankingEnabled == true) ...[
+                                _SongPosition(
+                                  position: currentSong.position!,
+                                )
+                              ],
+                              IconButton(
+                                onPressed: () {
+                                  Share.share(
+                                    currentSong.videoUrl,
+                                    subject:
+                                        '${currentSong.band} - ${currentSong.title}',
+                                  );
+                                },
+                                icon: const Icon(
+                                  Icons.share_outlined,
+                                ),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                       const SizedBox(height: Insets.large),
@@ -200,72 +221,39 @@ class _PlaylistTitle extends ConsumerWidget {
 }
 
 class _SongPosition extends StatelessWidget {
-  final Song currentSong;
-
   const _SongPosition({
-    required this.currentSong,
+    required this.position,
   });
+
+  final int position;
 
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          NumberFormat('00').format(currentSong.position!),
-          style: textTheme.displayLarge?.copyWith(
-            color: AppColors.frenchWine,
-          ),
-        ),
-        IconButton(
-          onPressed: () {
-            Share.share(
-              currentSong.videoUrl,
-              subject: '${currentSong.band} - ${currentSong.title}',
-            );
-          },
-          icon: const Icon(
-            Icons.share_outlined,
-          ),
-        ),
-      ],
+    return Text(
+      NumberFormat('00').format(position),
+      style: textTheme.displayLarge?.copyWith(
+        color: AppColors.frenchWine,
+      ),
     );
   }
 }
 
 class _TrendType extends StatelessWidget {
-  final Song currentSong;
-
   const _TrendType({
-    required this.currentSong,
+    required this.type,
   });
+
+  final String type;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Chip(
-          label: Text(
-            currentSong.trendType!,
-          ),
-          side: const BorderSide(color: AppColors.frenchWine),
-        ),
-        IconButton(
-          onPressed: () {
-            Share.share(
-              currentSong.videoUrl,
-              subject: '${currentSong.band} - ${currentSong.title}',
-            );
-          },
-          icon: const Icon(
-            Icons.share_outlined,
-          ),
-        )
-      ],
+    return Chip(
+      label: Text(
+        type,
+      ),
+      side: const BorderSide(color: AppColors.frenchWine),
     );
   }
 }
