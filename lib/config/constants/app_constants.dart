@@ -1,6 +1,16 @@
 class AppConstants {
   AppConstants._();
 
+  // Assets
+  static const String onlyGuitarBlackLogo =
+      'assets/images/rockers-only-guitar-black.png';
+  static const String onlyGuitarWhiteLogo =
+      'assets/images/rockers-only-guitar-white.png';
+
+  //Shared preferences keys
+  static const String sharedAutoplayKey = 'sharedAutoplayKey';
+  static const String sharedDarkModeKey = 'sharedDarkModeKey';
+      
   // Texts Constants
   static const String appVersionLabel = 'Version 2.0.0';
   static const String autoplayLabel = 'AUTOPLAY';
@@ -21,10 +31,4 @@ class AppConstants {
   static const double mediumRadius = 20.0;
   static const double smallRadius = 10.0;
   static const double textScaleFactor = 1.3;
-
-  // Assets
-  static const String onlyGuitarWhiteLogo =
-      'assets/images/rockers-only-guitar-white.png';
-  static const String onlyGuitarBlackLogo =
-      'assets/images/rockers-only-guitar-black.png';
 }

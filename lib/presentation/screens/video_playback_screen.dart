@@ -103,6 +103,9 @@ class _AutoPlay extends ConsumerWidget {
               value: ref.watch(autoplayProvider),
               onChanged: (value) {
                 ref.read(autoplayProvider.notifier).state = value;
+                ref
+                    .read(sharedUtilityProvider)
+                    .setAutoplayEnabled(isAutoplayEnabled: value);
               },
             ),
           ],
