@@ -7,6 +7,5 @@ export 'entities/song.dart';
 export 'entities/trending.dart';
 export 'entities/video_meta_data.dart';
 
-export 'repositories/auth_repository.dart';
 export 'repositories/playlist_repository.dart';
 export 'repositories/trending_repository.dart';
