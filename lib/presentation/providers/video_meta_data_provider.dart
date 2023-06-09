@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:youtube_explode_dart/youtube_explode_dart.dart';
 
 import 'package:rockers_app/domain/domain.dart';
-import 'package:youtube_explode_dart/youtube_explode_dart.dart';
 
 final videoMetaDataProvider =
     AsyncNotifierProvider<VideoMetaDataNotifier, VideoMetaData>(
@@ -27,5 +27,7 @@ class VideoMetaDataNotifier extends AsyncNotifier<VideoMetaData> {
         duration: videoExplode.duration ?? Duration.zero,
       ),
     );
+
+    YoutubeExplode().close();
   }
 }
