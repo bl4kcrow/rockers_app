@@ -15,7 +15,7 @@ class AppConstants {
   // Texts Constants
   static const String appVersionLabel = 'Version 2.0.0';
   static const String autoplayLabel = 'AUTOPLAY';
-  static const String bl4kcrowCopyright = '© Bl4kcrow Studios 2023';
+  static const String bl4kcrowCopyright = '© Bl4kcrow Studios';
   static const String durationLabel = 'Duration';
   static const String infoLabel = 'Info';
   static const String letTheRockLabel = 'Let the rock take your soul';

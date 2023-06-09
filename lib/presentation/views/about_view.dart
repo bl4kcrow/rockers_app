@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import 'package:rockers_app/config/config.dart';
+import 'package:rockers_app/presentation/presentation.dart';
 
 class AboutView extends ConsumerWidget {
   const AboutView({super.key});
@@ -12,6 +14,7 @@ class AboutView extends ConsumerWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     final bool isDarkMode = ref.watch(appThemeProvider).isDarkMode;
+    AsyncValue<PackageInfo> appInfo = ref.watch(appInfoProvider);
 
     return Scaffold(
       body: Center(
@@ -39,8 +42,12 @@ class AboutView extends ConsumerWidget {
             ),
             const SizedBox(height: Insets.large),
             const Text(AppConstants.spreadingRockLabel),
-            const Text(AppConstants.bl4kcrowCopyright),
-            const Text(AppConstants.appVersionLabel),
+            Text('${AppConstants.bl4kcrowCopyright} ${DateTime.now().year}'),
+            appInfo.when(
+              data: (info) => Text('${info.version}+${info.buildNumber}'),
+              error: (_, __) => const SizedBox.shrink(),
+              loading: () => const CircularProgressIndicator.adaptive(),
+            ),
           ],
         ),
       ),
