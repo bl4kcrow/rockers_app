@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 import 'package:rockers_app/config/config.dart';
 import 'package:rockers_app/domain/domain.dart';
@@ -21,9 +20,6 @@ class VideoCard extends ConsumerWidget {
     final Size screenSize = MediaQuery.of(context).size;
     final TextTheme textTheme = Theme.of(context).textTheme;
 
-    final String videoThumbnail = YoutubePlayerController.getThumbnail(
-      videoId: song.videoId,
-    );
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: Insets.small),
@@ -55,9 +51,8 @@ class VideoCard extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(
                       AppConstants.mediumRadius,
                     ),
-                    child: Image.network(
-                      videoThumbnail,
-                      fit: BoxFit.cover,
+                    child: ThumbnailImage(
+                      videoId: song.videoId,
                       height: screenSize.width * 0.5,
                       width: screenSize.width,
                     ),

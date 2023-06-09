@@ -18,6 +18,7 @@ export 'screens/video_playback_screen.dart';
 
 export 'widgets/playlist_bottom_list_view.dart';
 export 'widgets/playlist_horizontal_list_view.dart';
+export 'widgets/thumbnail_image.dart';
 export 'widgets/trending_bottom_list_view.dart';
 export 'widgets/video_card.dart';
 export 'widgets/video_controls.dart';

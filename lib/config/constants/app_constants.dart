@@ -2,6 +2,7 @@ class AppConstants {
   AppConstants._();
 
   // Assets
+  static const String noImagePath = 'assets/images/no-image.png';
   static const String onlyGuitarBlackLogo =
       'assets/images/rockers-only-guitar-black.png';
   static const String onlyGuitarWhiteLogo =

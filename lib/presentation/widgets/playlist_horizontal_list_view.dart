@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 import 'package:rockers_app/config/config.dart';
 import 'package:rockers_app/domain/domain.dart';
@@ -33,10 +32,6 @@ class PlaylistHorizontalListView extends ConsumerWidget {
       separatorBuilder: (_, __) => const SizedBox(width: Insets.medium),
       itemBuilder: (BuildContext context, int index) {
         final Song song = songs[index];
-
-        final String videoThumbnail = YoutubePlayerController.getThumbnail(
-          videoId: song.videoId,
-        );
 
         return SizedBox(
           width: screenSize.width * 0.5,
@@ -78,10 +73,8 @@ class PlaylistHorizontalListView extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(
                             AppConstants.smallRadius,
                           ),
-                          child: Image.network(
-                            videoThumbnail,
-                            fit: BoxFit.fitWidth,
-                            width: screenSize.width,
+                          child: ThumbnailImage(
+                            videoId: song.videoId,
                           ),
                         ),
                       ),

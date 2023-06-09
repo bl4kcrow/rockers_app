@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 import 'package:rockers_app/config/config.dart';
 import 'package:rockers_app/data/data.dart';
@@ -73,10 +72,6 @@ class _TrendingHorizontalListViewState
           trendingSongs[index],
         );
 
-        final String videoThumbnail = YoutubePlayerController.getThumbnail(
-          videoId: song.videoId,
-        );
-
         return SizedBox(
           width: screenSize.width * 0.55,
           child: Column(
@@ -101,9 +96,8 @@ class _TrendingHorizontalListViewState
                           borderRadius: BorderRadius.circular(
                             AppConstants.smallRadius,
                           ),
-                          child: Image.network(
-                            videoThumbnail,
-                            fit: BoxFit.cover,
+                          child: ThumbnailImage(
+                            videoId: song.videoId,
                           ),
                         ),
                       ),
