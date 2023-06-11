@@ -36,6 +36,12 @@ class _TrendingScreenState extends ConsumerState<TrendingView> {
   }
 
   @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final List<Trending> trending = ref.watch(trendingProvider);
     final isDarkMode = ref.watch(appThemeProvider).isDarkMode;
