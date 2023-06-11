@@ -20,10 +20,17 @@ class PlaylistsNotifier extends StateNotifier<List<Playlist>> {
     state = [...initialPlaylists];
   }
 
-  Future<void> nextLoad() async {
+  Future<bool> nextLoad() async {
+    bool isThereNextLoad = false;
+
     final List<Playlist> nextPlaylists =
         await ref.watch(playlistRepositoryProvider).nextLoad();
 
-    state = [...state, ...nextPlaylists];
+    if (nextPlaylists.isNotEmpty) {
+      state = [...state, ...nextPlaylists];
+      isThereNextLoad = true;
+    }
+
+    return isThereNextLoad;
   }
 }

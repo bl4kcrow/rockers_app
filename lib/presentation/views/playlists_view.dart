@@ -13,11 +13,27 @@ class PlaylistsView extends ConsumerStatefulWidget {
 }
 
 class _PlaylistsViewState extends ConsumerState<PlaylistsView> {
+  ScrollController scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
 
+    scrollController.addListener(_scrollListener);
     ref.read(playlistsProvider.notifier).initialLoad();
+  }
+
+  void _scrollListener() async {
+    if (scrollController.offset >= scrollController.position.maxScrollExtent &&
+        !scrollController.position.outOfRange) {
+      await ref.read(playlistsProvider.notifier).nextLoad();
+    }
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -37,6 +53,7 @@ class _PlaylistsViewState extends ConsumerState<PlaylistsView> {
           ref.read(playlistsProvider.notifier).initialLoad();
         },
         child: ListView.builder(
+          controller: scrollController,
           itemCount: playlists.length,
           itemBuilder: (context, index) {
             return Card(
