@@ -21,94 +21,99 @@ class VideoCard extends ConsumerWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: Insets.small),
-      child: InkWell(
-        onTap: () {
-          ref.read(currentSongProvider.notifier).update(song);
-          ref.read(trendingProvider.notifier).setAsCurrentPlaylist();
-          ref.read(videoPlayerProvider).loadVideoById(song.videoId);
-          ref
-              .read(videoMetaDataProvider.notifier)
-              .fetchVideoMetaData(song.videoId);
+    return Semantics(
+      label: '${SemanticLabels.songCard} ${song.band} ${song.title}',
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: Insets.small),
+        child: InkWell(
+          onTap: () {
+            ref.read(currentSongProvider.notifier).update(song);
+            ref.read(trendingProvider.notifier).setAsCurrentPlaylist();
+            ref.read(videoPlayerProvider).loadVideoById(song.videoId);
+            ref
+                .read(videoMetaDataProvider.notifier)
+                .fetchVideoMetaData(song.videoId);
 
-          context.goNamed(
-            Routes.videoPlaybackScreen,
-            pathParameters: {'page': '0'},
-            extra: {
-              'bottomWidget': const TrendingBottomListView(),
-            },
-          );
-        },
-        child: Column(
-          children: [
-            SizedBox(
-              height: screenSize.width * 0.5,
-              width: screenSize.width,
-              child: Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(
-                      AppConstants.mediumRadius,
+            context.goNamed(
+              Routes.videoPlaybackScreen,
+              pathParameters: {'page': '0'},
+              extra: {
+                'bottomWidget': const TrendingBottomListView(),
+              },
+            );
+          },
+          child: Column(
+            children: [
+              SizedBox(
+                height: screenSize.width * 0.5,
+                width: screenSize.width,
+                child: Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                        AppConstants.mediumRadius,
+                      ),
+                      child: ThumbnailImage(
+                        videoId: song.videoId,
+                        height: screenSize.width * 0.5,
+                        width: screenSize.width,
+                      ),
                     ),
-                    child: ThumbnailImage(
-                      videoId: song.videoId,
-                      height: screenSize.width * 0.5,
-                      width: screenSize.width,
-                    ),
-                  ),
-                  (song.trendType != null)
-                      ? Positioned(
-                          right: Insets.small,
-                          top: Insets.small,
-                          child: Chip(
-                            label: Text(song.trendType!),
+                    (song.trendType != null)
+                        ? Positioned(
+                            right: Insets.small,
+                            top: Insets.small,
+                            child: Chip(
+                              label: Text(song.trendType!),
+                            ),
+                          )
+                        : const SizedBox.shrink(),
+                  ],
+                ),
+              ),
+              const SizedBox(height: Insets.medium),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: Insets.xsmall),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            song.band,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: textTheme.titleLarge,
+                            textScaleFactor: AppConstants.textScaleFactor,
                           ),
-                        )
-                      : const SizedBox.shrink(),
-                ],
-              ),
-            ),
-            const SizedBox(height: Insets.medium),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: Insets.xsmall),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          song.band,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: textTheme.titleLarge,
-                          textScaleFactor: AppConstants.textScaleFactor,
-                        ),
-                        Text(
-                          song.title,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: textTheme.bodyMedium,
-                        ),
-                      ],
+                          Text(
+                            song.title,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: textTheme.bodyMedium,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      Share.share(
-                        song.videoUrl,
-                        subject: '${song.band} - ${song.title}',
-                      );
-                    },
-                    icon: const Icon(
-                      Icons.share_outlined,
-                    ),
-                  )
-                ],
+                    IconButton(
+                      onPressed: () {
+                        Share.share(
+                          song.videoUrl,
+                          subject: '${song.band} - ${song.title}',
+                        );
+                      },
+                      icon: Icon(
+                        Icons.share_outlined,
+                        semanticLabel:
+                            '${SemanticLabels.shareSong} ${song.band} ${song.title}',
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

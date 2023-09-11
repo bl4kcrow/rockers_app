@@ -73,43 +73,48 @@ class _PlayListBottomListViewState
                         .read(videoMetaDataProvider.notifier)
                         .fetchVideoMetaData(song.videoId);
                   },
-                  child: Stack(
-                    children: [
-                      AspectRatio(
-                        aspectRatio: 16 / 9,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(
-                            AppConstants.smallRadius,
-                          ),
-                          child: ThumbnailImage(
-                            videoId: song.videoId,
+                  child: Semantics(
+                    label:
+                        '${SemanticLabels.songCard} ${song.band} ${song.title}',
+                    child: Stack(
+                      children: [
+                        AspectRatio(
+                          aspectRatio: 16 / 9,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(
+                              AppConstants.smallRadius,
+                            ),
+                            child: ThumbnailImage(
+                              videoId: song.videoId,
+                            ),
                           ),
                         ),
-                      ),
-                      widget.rankingEnabled == true
-                          ? Positioned(
-                              right: Insets.small,
-                              top: Insets.small,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: AppColors.smokyBlack.withOpacity(0.7),
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    width: 2,
-                                    color: AppColors.frenchWine,
+                        widget.rankingEnabled == true
+                            ? Positioned(
+                                right: Insets.small,
+                                top: Insets.small,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color:
+                                        AppColors.smokyBlack.withOpacity(0.7),
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      width: 2,
+                                      color: AppColors.frenchWine,
+                                    ),
+                                  ),
+                                  padding: const EdgeInsets.all(Insets.medium),
+                                  child: Text(
+                                    NumberFormat('00').format(song.position),
+                                    style: textTheme.bodyLarge?.copyWith(
+                                      color: AppColors.white,
+                                    ),
                                   ),
                                 ),
-                                padding: const EdgeInsets.all(Insets.medium),
-                                child: Text(
-                                  NumberFormat('00').format(song.position),
-                                  style: textTheme.bodyLarge?.copyWith(
-                                    color: AppColors.white,
-                                  ),
-                                ),
-                              ),
-                            )
-                          : const SizedBox.shrink(),
-                    ],
+                              )
+                            : const SizedBox.shrink(),
+                      ],
+                    ),
                   ),
                 ),
               ),

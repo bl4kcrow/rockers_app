@@ -2,6 +2,7 @@ export 'constants/app_constants.dart';
 export 'constants/environment.dart';
 export 'constants/icon_sizes.dart';
 export 'constants/insets.dart';
+export 'constants/semantic_labels.dart';
 
 export 'routes/app_router.dart';
 export 'routes/routes.dart';

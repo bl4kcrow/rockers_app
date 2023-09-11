@@ -19,6 +19,7 @@ class VideoMetaDataInfo extends ConsumerWidget {
         Text(
           AppConstants.infoLabel,
           textAlign: TextAlign.center,
+          semanticsLabel: AppConstants.infoLabel,
           style: textTheme.titleLarge,
         ),
         videoMetaData.when(
@@ -33,11 +34,13 @@ class VideoMetaDataInfo extends ConsumerWidget {
                     Text(
                       AppConstants.viewsLabel,
                       textAlign: TextAlign.center,
+                      semanticsLabel: AppConstants.viewsLabel,
                       style: textTheme.titleLarge,
                     ),
                     Text(
                       NumberFormat.compact().format(metaData.views),
                       textAlign: TextAlign.center,
+                      semanticsLabel: metaData.views.toString(),
                       style: textTheme.titleSmall,
                     ),
                   ],
@@ -48,11 +51,13 @@ class VideoMetaDataInfo extends ConsumerWidget {
                     Text(
                       AppConstants.durationLabel,
                       textAlign: TextAlign.center,
+                      semanticsLabel: AppConstants.durationLabel,
                       style: textTheme.titleLarge,
                     ),
                     Text(
                       metaData.duration.toMinutesSeconds(),
                       textAlign: TextAlign.center,
+                      semanticsLabel: metaData.duration.toMinutesSeconds(),
                       style: textTheme.titleSmall,
                     )
                   ],

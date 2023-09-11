@@ -45,7 +45,10 @@ class _PlaylistsViewState extends ConsumerState<PlaylistsView> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppConstants.playlistsLabel),
+        title: const Text(
+          AppConstants.playlistsLabel,
+          semanticsLabel: AppConstants.playlistsLabel,
+        ),
       ),
       body: RefreshIndicator(
         displacement: AppConstants.refreshDisplacement,
@@ -56,35 +59,38 @@ class _PlaylistsViewState extends ConsumerState<PlaylistsView> {
           controller: scrollController,
           itemCount: playlists.length,
           itemBuilder: (context, index) {
-            return Card(
-              elevation: 2.0,
-              child: Container(
-                height: screenSize.width * 0.6,
-                padding: const EdgeInsets.fromLTRB(
-                  Insets.medium,
-                  Insets.small,
-                  Insets.none,
-                  Insets.small,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      playlists[index].name,
-                      style: textTheme.titleLarge,
-                      overflow: TextOverflow.ellipsis,
-                      textScaleFactor: AppConstants.textScaleFactor,
-                    ),
-                    Expanded(
-                      child: PlaylistHorizontalListView(
-                        songs: playlists[index].songs,
-                        rankingEnabled: playlists[index].rankingEnable,
-                        name: playlists[index].name,
-                        priority: playlists[index].priority,
+            return Semantics(
+              label: '${SemanticLabels.playlist} ${playlists[index].name}',
+              child: Card(
+                elevation: 2.0,
+                child: Container(
+                  height: screenSize.width * 0.6,
+                  padding: const EdgeInsets.fromLTRB(
+                    Insets.medium,
+                    Insets.small,
+                    Insets.none,
+                    Insets.small,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        playlists[index].name,
+                        style: textTheme.titleLarge,
+                        overflow: TextOverflow.ellipsis,
+                        textScaleFactor: AppConstants.textScaleFactor,
                       ),
-                    ),
-                  ],
+                      Expanded(
+                        child: PlaylistHorizontalListView(
+                          songs: playlists[index].songs,
+                          rankingEnabled: playlists[index].rankingEnable,
+                          name: playlists[index].name,
+                          priority: playlists[index].priority,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );

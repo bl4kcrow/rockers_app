@@ -18,10 +18,14 @@ class VideoControls extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IconButton.outlined(
-            onPressed: () {
-              ref.read(videoPlayerProvider).previous();
-            },
-            icon: const Icon(Icons.skip_previous_outlined)),
+          onPressed: () {
+            ref.read(videoPlayerProvider).previous();
+          },
+          icon: const Icon(
+            Icons.skip_previous_outlined,
+            semanticLabel: SemanticLabels.previousSong,
+          ),
+        ),
         YoutubeValueBuilder(
           controller: videoPlayer.playerController,
           builder: (context, value) => IconButton.outlined(
@@ -38,6 +42,9 @@ class VideoControls extends ConsumerWidget {
               value.playerState == PlayerState.playing
                   ? Icons.pause_outlined
                   : Icons.play_arrow_outlined,
+              semanticLabel: value.playerState == PlayerState.playing
+                  ? SemanticLabels.pauseSong
+                  : SemanticLabels.playSong,
             ),
           ),
         ),
@@ -45,7 +52,10 @@ class VideoControls extends ConsumerWidget {
           onPressed: () {
             ref.read(videoPlayerProvider).next();
           },
-          icon: const Icon(Icons.skip_next_outlined),
+          icon: const Icon(
+            Icons.skip_next_outlined,
+            semanticLabel: SemanticLabels.nextSong,
+          ),
         ),
       ],
     );

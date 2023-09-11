@@ -106,6 +106,7 @@ class _AutoPlay extends ConsumerWidget {
         Text(
           AppConstants.upNextLabel,
           style: textTheme.titleLarge,
+          semanticsLabel: AppConstants.upNextLabel,
         ),
         Row(
           children: [
@@ -113,14 +114,17 @@ class _AutoPlay extends ConsumerWidget {
               AppConstants.autoplayLabel,
               style: textTheme.bodyLarge,
             ),
-            Switch.adaptive(
-              value: ref.watch(autoplayProvider),
-              onChanged: (value) {
-                ref.read(autoplayProvider.notifier).state = value;
-                ref
-                    .read(sharedUtilityProvider)
-                    .setAutoplayEnabled(isAutoplayEnabled: value);
-              },
+            Semantics(
+              label: SemanticLabels.autoplaySwitch,
+              child: Switch.adaptive(
+                value: ref.watch(autoplayProvider),
+                onChanged: (value) {
+                  ref.read(autoplayProvider.notifier).state = value;
+                  ref
+                      .read(sharedUtilityProvider)
+                      .setAutoplayEnabled(isAutoplayEnabled: value);
+                },
+              ),
             ),
           ],
         ),
@@ -192,6 +196,7 @@ class _PlayerScaffoldBody extends ConsumerWidget {
                                 },
                                 icon: const Icon(
                                   Icons.share_outlined,
+                                  semanticLabel: SemanticLabels.shareSong,
                                 ),
                               ),
                             ],
@@ -230,6 +235,7 @@ class _PlaylistTitle extends ConsumerWidget {
 
     return Text(
       currentPlaylist.name,
+      semanticsLabel: '${SemanticLabels.playlist} ${currentPlaylist.name}',
       style: textTheme.titleLarge,
       textAlign: TextAlign.center,
       textScaleFactor: AppConstants.textScaleFactor,
@@ -250,6 +256,7 @@ class _SongPosition extends StatelessWidget {
 
     return Text(
       NumberFormat('00').format(position),
+      semanticsLabel: '${SemanticLabels.position} $position',
       style: textTheme.displayLarge?.copyWith(
         color: AppColors.frenchWine,
       ),
@@ -269,6 +276,7 @@ class _TrendType extends StatelessWidget {
     return Chip(
       label: Text(
         type,
+        semanticsLabel: '${SemanticLabels.trendingType} $type',
       ),
       side: const BorderSide(color: AppColors.frenchWine),
     );

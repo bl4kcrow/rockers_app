@@ -18,8 +18,11 @@ class VideoPlayer extends StatelessWidget {
       child: Stack(
         alignment: Alignment.centerLeft,
         children: [
-          SizedBox(
-            child: videoPlayer,
+          Semantics(
+            label: SemanticLabels.videoPlayer,
+            child: SizedBox(
+              child: videoPlayer,
+            ),
           ),
           FloatingActionButton.small(
             onPressed: () {
@@ -27,6 +30,7 @@ class VideoPlayer extends StatelessWidget {
             },
             child: const Icon(
               Icons.arrow_back_ios_new_outlined,
+              semanticLabel: SemanticLabels.backFloatingButton,
             ),
           ),
         ],

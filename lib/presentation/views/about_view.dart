@@ -26,6 +26,7 @@ class AboutView extends ConsumerWidget {
                   ? AppConstants.onlyGuitarWhiteLogo
                   : AppConstants.onlyGuitarBlackLogo,
               height: screenSize.width * 0.3,
+              semanticLabel: SemanticLabels.rockersLogo,
             ),
             Text(
               AppConstants.rockers,

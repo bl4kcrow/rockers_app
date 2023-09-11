@@ -88,29 +88,33 @@ class _TrendingHorizontalListViewState
                         .read(videoMetaDataProvider.notifier)
                         .fetchVideoMetaData(song.videoId);
                   },
-                  child: Stack(
-                    children: [
-                      AspectRatio(
-                        aspectRatio: 16 / 9,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(
-                            AppConstants.smallRadius,
-                          ),
-                          child: ThumbnailImage(
-                            videoId: song.videoId,
+                  child: Semantics(
+                    label:
+                        '${SemanticLabels.songCard} ${song.trendType} ${song.band} ${song.title}',
+                    child: Stack(
+                      children: [
+                        AspectRatio(
+                          aspectRatio: 16 / 9,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(
+                              AppConstants.smallRadius,
+                            ),
+                            child: ThumbnailImage(
+                              videoId: song.videoId,
+                            ),
                           ),
                         ),
-                      ),
-                      song.trendType != null
-                          ? Positioned(
-                              left: Insets.xsmall,
-                              bottom: Insets.xsmall,
-                              child: Chip(
-                                label: Text(song.trendType!),
-                              ),
-                            )
-                          : const SizedBox.shrink(),
-                    ],
+                        song.trendType != null
+                            ? Positioned(
+                                left: Insets.xsmall,
+                                bottom: Insets.xsmall,
+                                child: Chip(
+                                  label: Text(song.trendType!),
+                                ),
+                              )
+                            : const SizedBox.shrink(),
+                      ],
+                    ),
                   ),
                 ),
               ),

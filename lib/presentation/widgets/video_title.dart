@@ -28,11 +28,13 @@ class VideoTitle extends ConsumerWidget {
             overflow: TextOverflow.ellipsis,
             style: textTheme.titleLarge,
             textScaleFactor: AppConstants.textScaleFactor,
+            semanticsLabel: band,
           ),
           Text(
             title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
+            semanticsLabel: title,
             style: textTheme.titleMedium,
           ),
         ],

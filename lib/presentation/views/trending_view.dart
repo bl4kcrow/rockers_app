@@ -53,6 +53,7 @@ class _TrendingScreenState extends ConsumerState<TrendingView> {
           IconButton(
             icon: Icon(
               isDarkMode ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
+              semanticLabel: SemanticLabels.darkModeButton,
             ),
             iconSize: IconSize.extraLarge,
             padding: const EdgeInsets.all(Insets.medium),

@@ -41,7 +41,10 @@ class PlaylistHorizontalListView extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Flexible(
-                child: InkWell(
+                child: Semantics(
+                  label: rankingEnabled
+                      ? '${SemanticLabels.songCard} ${SemanticLabels.position} ${song.position} ${song.band} ${song.title}'
+                      : '${SemanticLabels.songCard} ${song.band} ${song.title}',
                   onTap: () {
                     ref.read(currentSongProvider.notifier).update(song);
                     ref.read(videoPlayerProvider).loadVideoById(song.videoId);
@@ -115,12 +118,14 @@ class PlaylistHorizontalListView extends ConsumerWidget {
                       song.band,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
+                      semanticsLabel: song.band,
                       style: textTheme.bodyLarge,
                     ),
                     Text(
                       song.title,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
+                      semanticsLabel: song.title,
                     ),
                   ],
                 ),
