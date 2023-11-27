@@ -2,6 +2,7 @@ export 'datasources/auth_datasource.dart';
 export 'datasources/playlist_datasource.dart';
 export 'datasources/trending_datasource.dart';
 
+export 'entities/notifications_state.dart';
 export 'entities/playlist.dart';
 export 'entities/song.dart';
 export 'entities/trending.dart';

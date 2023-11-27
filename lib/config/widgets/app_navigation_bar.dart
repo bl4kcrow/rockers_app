@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:rockers_app/config/config.dart';
+import 'package:rockers_app/presentation/presentation.dart';
 
-class AppNavigationBar extends StatelessWidget {
+class AppNavigationBar extends ConsumerWidget {
   const AppNavigationBar({
     super.key,
     required this.currentIndex,
@@ -13,7 +15,8 @@ class AppNavigationBar extends StatelessWidget {
   final Function(int)? onTap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(pushNotificationsProvider);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppConstants.mediumRadius),
