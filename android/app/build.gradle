@@ -33,7 +33,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    // ndkVersion flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -76,6 +76,7 @@ android {
             // signingConfig signingConfigs.debug
         }
     }
+    namespace 'com.bl4ckcrow.rockers'
 }
 
 flutter {
