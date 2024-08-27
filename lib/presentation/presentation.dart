@@ -4,7 +4,6 @@ export 'providers/current_song_provider.dart';
 export 'providers/current_playlist_provider.dart';
 export 'providers/playlists_provider.dart';
 export 'providers/playlist_repository_provider.dart';
-export 'providers/push_notifications_provider.dart';
 export 'providers/shared_utility_provider.dart';
 export 'providers/trending_provider.dart';
 export 'providers/trending_repository_provider.dart';
