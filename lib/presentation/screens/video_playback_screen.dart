@@ -59,8 +59,6 @@ class _VideoPlaybackScreenState extends ConsumerState<VideoPlaybackScreen> {
   @override
   void dispose() {
     playerControllerListener.cancel();
-    ref.invalidate(videoPlayerProvider);
-
     super.dispose();
   }
 
@@ -74,22 +72,30 @@ class _VideoPlaybackScreenState extends ConsumerState<VideoPlaybackScreen> {
       playerControllerListener.resume();
     }
 
-    return SafeArea(
-      child: YoutubePlayerScaffold(
-        autoFullScreen: true,
-        controller: playerProvider.playerController,
-        defaultOrientations: const [
-          DeviceOrientation.portraitUp,
-          DeviceOrientation.portraitDown,
-        ],
-        builder: (context, videoPlayer) {
-          return Scaffold(
-            body: _PlayerScaffoldBody(
-              bottomWidget: widget.bottomWidget,
-              player: videoPlayer,
-            ),
-          );
-        },
+    return PopScope(
+      onPopInvokedWithResult: (
+        didPop,
+        result,
+      ) {
+        ref.invalidate(videoPlayerProvider);
+      },
+      child: SafeArea(
+        child: YoutubePlayerScaffold(
+          autoFullScreen: true,
+          controller: playerProvider.playerController,
+          defaultOrientations: const [
+            DeviceOrientation.portraitUp,
+            DeviceOrientation.portraitDown,
+          ],
+          builder: (context, videoPlayer) {
+            return Scaffold(
+              body: _PlayerScaffoldBody(
+                bottomWidget: widget.bottomWidget,
+                player: videoPlayer,
+              ),
+            );
+          },
+        ),
       ),
     );
   }
