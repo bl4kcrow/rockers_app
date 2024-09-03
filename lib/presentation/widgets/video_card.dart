@@ -85,7 +85,9 @@ class VideoCard extends ConsumerWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: textTheme.titleLarge,
-                            textScaleFactor: AppConstants.textScaleFactor,
+                            textScaler: const TextScaler.linear(
+                              AppConstants.textScaleFactor,
+                            ),
                           ),
                           Text(
                             song.title,

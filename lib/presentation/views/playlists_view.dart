@@ -79,7 +79,9 @@ class _PlaylistsViewState extends ConsumerState<PlaylistsView> {
                         playlists[index].name,
                         style: textTheme.titleLarge,
                         overflow: TextOverflow.ellipsis,
-                        textScaleFactor: AppConstants.textScaleFactor,
+                        textScaler: const TextScaler.linear(
+                          AppConstants.textScaleFactor,
+                        ),
                       ),
                       Expanded(
                         child: PlaylistHorizontalListView(
