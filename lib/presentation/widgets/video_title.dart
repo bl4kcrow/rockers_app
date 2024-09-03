@@ -27,7 +27,7 @@ class VideoTitle extends ConsumerWidget {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: textTheme.titleLarge,
-            textScaleFactor: AppConstants.textScaleFactor,
+            textScaler: const TextScaler.linear(AppConstants.textScaleFactor),
             semanticsLabel: band,
           ),
           Text(

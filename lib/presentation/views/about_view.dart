@@ -33,7 +33,7 @@ class AboutView extends ConsumerWidget {
               style: textTheme.titleLarge?.copyWith(
                 fontFamily: 'ManoNegra',
               ),
-              textScaleFactor: AppConstants.textScaleFactor,
+              textScaler: const TextScaler.linear(AppConstants.textScaleFactor),
             ),
             Text(
               AppConstants.letTheRockLabel,

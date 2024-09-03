@@ -238,7 +238,7 @@ class _PlaylistTitle extends ConsumerWidget {
       semanticsLabel: '${SemanticLabels.playlist} ${currentPlaylist.name}',
       style: textTheme.titleLarge,
       textAlign: TextAlign.center,
-      textScaleFactor: AppConstants.textScaleFactor,
+      textScaler: const TextScaler.linear(AppConstants.textScaleFactor),
     );
   }
 }
