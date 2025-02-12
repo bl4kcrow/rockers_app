@@ -29,6 +29,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
+    namespace 'com.bl4ckcrow.rockers'
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
