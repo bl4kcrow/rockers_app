@@ -26,7 +26,7 @@ class AppTheme {
         surfaceTint: AppColors.smokyBlack,
       ),
       appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.smokyBlack.withOpacity(0.8),
+        backgroundColor: AppColors.smokyBlack.withValues(alpha: 0.8),
         systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
           statusBarColor: AppColors.smokyBlack,
           statusBarIconBrightness: Brightness.light,
@@ -35,7 +35,7 @@ class AppTheme {
         ),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: AppColors.smokyBlack.withOpacity(0.8),
+        backgroundColor: AppColors.smokyBlack.withValues(alpha: 0.8),
         elevation: 0.0,
         selectedItemColor: AppColors.frenchWine,
         selectedLabelStyle: AppTextStyle.bodyMedium.copyWith(
@@ -45,7 +45,7 @@ class AppTheme {
         unselectedItemColor: AppColors.white,
         type: BottomNavigationBarType.fixed,
       ),
-      canvasColor: AppColors.smokyBlack.withOpacity(0.7),
+      canvasColor: AppColors.smokyBlack.withValues(alpha: 0.7),
       chipTheme: const ChipThemeData(
         side: BorderSide.none,
       ),
@@ -115,7 +115,7 @@ class AppTheme {
         surfaceTint: AppColors.white,
       ),
       appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.white.withOpacity(0.9),
+        backgroundColor: AppColors.white.withValues(alpha: 0.9),
         systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
           statusBarColor: AppColors.white,
           statusBarIconBrightness: Brightness.dark,
@@ -124,7 +124,7 @@ class AppTheme {
         ),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: AppColors.white.withOpacity(0.8),
+        backgroundColor: AppColors.white.withValues(alpha: 0.8),
         elevation: 0.0,
         selectedItemColor: AppColors.frenchWine,
         selectedLabelStyle: AppTextStyle.bodyMedium.copyWith(
@@ -134,7 +134,7 @@ class AppTheme {
         unselectedItemColor: AppColors.smokyBlack,
         type: BottomNavigationBarType.fixed,
       ),
-      canvasColor: AppColors.white.withOpacity(0.7),
+      canvasColor: AppColors.white.withValues(alpha: 0.7),
       chipTheme: const ChipThemeData(
         side: BorderSide.none,
       ),

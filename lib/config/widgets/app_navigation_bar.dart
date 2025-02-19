@@ -19,7 +19,7 @@ class AppNavigationBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppConstants.mediumRadius),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
+            color: Colors.grey.withValues(alpha: 0.5),
             spreadRadius: 3.0,
             blurRadius: 2.0,
             offset: const Offset(0.0, 1.0), // changes position of shadow

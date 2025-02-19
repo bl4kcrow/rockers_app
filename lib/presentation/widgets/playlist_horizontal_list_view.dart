@@ -89,7 +89,8 @@ class PlaylistHorizontalListView extends ConsumerWidget {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color:
-                                        AppColors.smokyBlack.withOpacity(0.7),
+                                        AppColors.smokyBlack
+                                        .withValues(alpha: 0.7),
                                     shape: BoxShape.circle,
                                     border: Border.all(
                                       width: 2,
