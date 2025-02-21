@@ -12,7 +12,6 @@ export 'theme/app_text_style.dart';
 export 'theme/app_theme_provider.dart';
 export 'theme/app_theme.dart';
 
-export 'utils/firebase_options.dart';
 export 'utils/format_duration.dart';
 export 'utils/trend_type.dart';
 
