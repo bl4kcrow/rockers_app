@@ -3,11 +3,12 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
-
-import 'package:rockers_app/config/config.dart';
+import 'package:rockers_app/config/config.dart' show Environment;
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 class DefaultFirebaseOptions {
+  static final Environment _environment = Environment.prod();
+
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       return web;
@@ -40,8 +41,8 @@ class DefaultFirebaseOptions {
   }
 
   static FirebaseOptions web = FirebaseOptions(
-    apiKey: Environment.firebaseWebApiKey,
-    appId: Environment.firebaseAppId,
+    apiKey: _environment.firebaseWebApiKey,
+    appId: _environment.firebaseAppId,
     messagingSenderId: '497715268668',
     projectId: 'rockers-db',
     authDomain: 'rockers-db.firebaseapp.com',
@@ -51,8 +52,8 @@ class DefaultFirebaseOptions {
   );
 
   static FirebaseOptions android = FirebaseOptions(
-    apiKey: Environment.firebaseAndroidApiKey,
-    appId: Environment.firebaseAppId,
+    apiKey: _environment.firebaseAndroidApiKey,
+    appId: _environment.firebaseAppId,
     messagingSenderId: '497715268668',
     projectId: 'rockers-db',
     databaseURL: 'https://rockers-db.firebaseio.com',
@@ -60,14 +61,14 @@ class DefaultFirebaseOptions {
   );
 
   static FirebaseOptions ios = FirebaseOptions(
-    apiKey: Environment.firebaseIosApiKey,
-    appId: Environment.firebaseAppId,
+    apiKey: _environment.firebaseIosApiKey,
+    appId: _environment.firebaseAppId,
     messagingSenderId: '497715268668',
     projectId: 'rockers-db',
     databaseURL: 'https://rockers-db.firebaseio.com',
     storageBucket: 'rockers-db.appspot.com',
-    androidClientId: Environment.firebaseAndroidClientId,
-    iosClientId: Environment.firebaseIosClientId,
+    androidClientId: _environment.firebaseAndroidClientId,
+    iosClientId: _environment.firebaseIosClientId,
     iosBundleId: 'com.bl4kcrow.rockersApp',
   );
 }

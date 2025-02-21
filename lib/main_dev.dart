@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rockers_app/config/config.dart';
 import 'package:rockers_app/presentation/presentation.dart';
 
-import 'config/utils/firebase_options_prod.dart';
+import 'config/utils/firebase_options_dev.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -42,7 +42,7 @@ class MainApp extends ConsumerWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: appTheme.getTheme(),
-      title: 'Rockers App',
+      title: 'Rockers App Dev',
       routerConfig: appRouter,
     );
   }
