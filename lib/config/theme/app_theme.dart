@@ -26,24 +26,18 @@ class AppTheme {
         surfaceTint: AppColors.smokyBlack,
       ),
       appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.smokyBlack.withValues(alpha: 0.8),
+        backgroundColor: AppColors.eerieBlack.withValues(alpha: 0.8),
         systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
-          statusBarColor: AppColors.smokyBlack,
+          statusBarColor: AppColors.eerieBlack,
           statusBarIconBrightness: Brightness.light,
-          systemNavigationBarColor: AppColors.smokyBlack,
+          systemNavigationBarColor: AppColors.eerieBlack,
           systemNavigationBarIconBrightness: Brightness.light,
         ),
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: AppColors.smokyBlack.withValues(alpha: 0.8),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: AppColors.eerieBlack,
         elevation: 0.0,
-        selectedItemColor: AppColors.frenchWine,
-        selectedLabelStyle: AppTextStyle.bodyMedium.copyWith(
-          color: AppColors.frenchWine,
-        ),
-        showUnselectedLabels: false,
-        unselectedItemColor: AppColors.white,
-        type: BottomNavigationBarType.fixed,
+        indicatorColor: AppColors.frenchWine,
       ),
       canvasColor: AppColors.smokyBlack.withValues(alpha: 0.7),
       chipTheme: const ChipThemeData(
@@ -123,16 +117,10 @@ class AppTheme {
           systemNavigationBarIconBrightness: Brightness.dark,
         ),
       ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: AppColors.white.withValues(alpha: 0.8),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: AppColors.white,
         elevation: 0.0,
-        selectedItemColor: AppColors.frenchWine,
-        selectedLabelStyle: AppTextStyle.bodyMedium.copyWith(
-          color: AppColors.frenchWine,
-        ),
-        showUnselectedLabels: false,
-        unselectedItemColor: AppColors.smokyBlack,
-        type: BottomNavigationBarType.fixed,
+        indicatorColor: AppColors.frenchWine,
       ),
       canvasColor: AppColors.white.withValues(alpha: 0.7),
       chipTheme: const ChipThemeData(
