@@ -51,7 +51,7 @@ class VideoCard extends ConsumerWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(
-                        AppConstants.mediumRadius,
+                        AppConstants.smallRadius,
                       ),
                       child: ThumbnailImage(
                         videoId: song.videoId,
@@ -71,7 +71,7 @@ class VideoCard extends ConsumerWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: Insets.medium),
+              const SizedBox(height: Insets.small),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: Insets.xsmall),
                 child: Row(
@@ -84,7 +84,7 @@ class VideoCard extends ConsumerWidget {
                             song.band,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: textTheme.titleLarge,
+                            style: textTheme.titleMedium,
                             textScaler: const TextScaler.linear(
                               AppConstants.textScaleFactor,
                             ),
