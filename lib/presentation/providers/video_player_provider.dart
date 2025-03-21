@@ -28,6 +28,10 @@ class VideoPlayerNotifier {
     await _playerController.cueVideoById(videoId: videoId);
   }
 
+  void fullScreen() {
+    _playerController.toggleFullScreen();
+  }
+
   Future<void> loadVideoById(String videoId) async {
     await _playerController.loadVideoById(videoId: videoId);
   }

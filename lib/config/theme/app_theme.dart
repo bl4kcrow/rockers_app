@@ -13,6 +13,22 @@ class AppTheme {
   static ThemeData dark() {
     return ThemeData(
       useMaterial3: true,
+      appBarTheme: AppBarTheme(
+        backgroundColor: AppColors.eerieBlack.withValues(alpha: 0.8),
+        systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
+          statusBarColor: AppColors.eerieBlack,
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: AppColors.eerieBlack,
+          systemNavigationBarIconBrightness: Brightness.light,
+        ),
+      ),
+      canvasColor: AppColors.smokyBlack.withValues(alpha: 0.7),
+      cardTheme: const CardTheme(
+        color: AppColors.smokyBlack,
+      ),
+      chipTheme: const ChipThemeData(
+        side: BorderSide.none,
+      ),
       colorScheme: const ColorScheme.dark(
         primary: AppColors.frenchWine,
         onPrimary: AppColors.white,
@@ -25,26 +41,25 @@ class AppTheme {
         surface: AppColors.eerieBlack,
         surfaceTint: AppColors.smokyBlack,
       ),
-      appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.eerieBlack.withValues(alpha: 0.8),
-        systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
-          statusBarColor: AppColors.eerieBlack,
-          statusBarIconBrightness: Brightness.light,
-          systemNavigationBarColor: AppColors.eerieBlack,
-          systemNavigationBarIconBrightness: Brightness.light,
-        ),
-      ),
-      navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: AppColors.eerieBlack,
-        elevation: 0.0,
-        indicatorColor: AppColors.frenchWine,
-      ),
-      canvasColor: AppColors.smokyBlack.withValues(alpha: 0.7),
-      chipTheme: const ChipThemeData(
-        side: BorderSide.none,
-      ),
       dividerTheme: const DividerThemeData(
         color: AppColors.eerieBlack,
+      ),
+      expansionTileTheme: ExpansionTileThemeData(
+        expandedAlignment: Alignment.centerLeft,
+        tilePadding: EdgeInsets.symmetric(
+          horizontal: Insets.small,
+        ),
+        childrenPadding: EdgeInsets.symmetric(
+          horizontal: Insets.medium,
+        ),
+        collapsedShape: RoundedRectangleBorder(
+          side: BorderSide(color: AppColors.white),
+          borderRadius: BorderRadius.circular(Insets.small),
+        ),
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: AppColors.white),
+          borderRadius: BorderRadius.circular(Insets.small),
+        ),
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: AppColors.eerieBlack,
@@ -52,6 +67,11 @@ class AppTheme {
       ),
       fontFamily: 'Kollektif',
       iconTheme: const IconThemeData(color: AppColors.frenchWine),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: AppColors.eerieBlack,
+        elevation: 0.0,
+        indicatorColor: AppColors.frenchWine,
+      ),
       textTheme: Typography().white.copyWith(
             displayLarge: AppTextStyle.displayLarge.copyWith(
               color: AppColors.white,
@@ -84,10 +104,10 @@ class AppTheme {
               color: AppColors.white,
             ),
             bodyMedium: AppTextStyle.bodyMedium.copyWith(
-              color: AppColors.coolGrey,
+              color: AppColors.white,
             ),
             bodySmall: AppTextStyle.bodySmall.copyWith(
-              color: AppColors.coolGrey,
+              color: AppColors.white,
             ),
           ),
     );
@@ -96,6 +116,22 @@ class AppTheme {
   static ThemeData light() {
     return ThemeData(
       useMaterial3: true,
+      appBarTheme: AppBarTheme(
+        backgroundColor: AppColors.white.withValues(alpha: 0.8),
+        systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
+          statusBarColor: AppColors.white,
+          statusBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: AppColors.white,
+          systemNavigationBarIconBrightness: Brightness.dark,
+        ),
+      ),
+      canvasColor: AppColors.white.withValues(alpha: 0.7),
+      cardTheme: const CardTheme(
+        color: AppColors.white,
+      ),
+      chipTheme: const ChipThemeData(
+        side: BorderSide.none,
+      ),
       colorScheme: const ColorScheme.light(
         primary: AppColors.frenchWine,
         onPrimary: AppColors.smokyBlack,
@@ -108,26 +144,25 @@ class AppTheme {
         surface: AppColors.white,
         surfaceTint: AppColors.white,
       ),
-      appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.white.withValues(alpha: 0.9),
-        systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
-          statusBarColor: AppColors.white,
-          statusBarIconBrightness: Brightness.dark,
-          systemNavigationBarColor: AppColors.white,
-          systemNavigationBarIconBrightness: Brightness.dark,
-        ),
-      ),
-      navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: AppColors.white,
-        elevation: 0.0,
-        indicatorColor: AppColors.frenchWine,
-      ),
-      canvasColor: AppColors.white.withValues(alpha: 0.7),
-      chipTheme: const ChipThemeData(
-        side: BorderSide.none,
-      ),
       dividerTheme: const DividerThemeData(
         color: AppColors.eerieBlack,
+      ),
+      expansionTileTheme: ExpansionTileThemeData(
+        expandedAlignment: Alignment.centerLeft,
+        tilePadding: EdgeInsets.symmetric(
+          horizontal: Insets.small,
+        ),
+        childrenPadding: EdgeInsets.symmetric(
+          horizontal: Insets.medium,
+        ),
+        collapsedShape: RoundedRectangleBorder(
+          side: BorderSide(color: AppColors.outerSpace),
+          borderRadius: BorderRadius.circular(Insets.small),
+        ),
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: AppColors.outerSpace),
+          borderRadius: BorderRadius.circular(Insets.small),
+        ),
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: AppColors.white,
@@ -135,6 +170,11 @@ class AppTheme {
       ),
       fontFamily: 'Kollektif',
       iconTheme: const IconThemeData(color: AppColors.oldMauve),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: AppColors.white,
+        elevation: 0.0,
+        indicatorColor: AppColors.frenchWine,
+      ),
       textTheme: Typography().black.copyWith(
             displayLarge: AppTextStyle.displayLarge.copyWith(
               color: AppColors.smokyBlack,
@@ -167,10 +207,10 @@ class AppTheme {
               color: AppColors.smokyBlack,
             ),
             bodyMedium: AppTextStyle.bodyMedium.copyWith(
-              color: AppColors.outerSpace,
+              color: AppColors.eerieBlack,
             ),
-            bodySmall: AppTextStyle.bodyMedium.copyWith(
-              color: AppColors.outerSpace,
+            bodySmall: AppTextStyle.bodySmall.copyWith(
+              color: AppColors.eerieBlack,
             ),
           ),
     );
