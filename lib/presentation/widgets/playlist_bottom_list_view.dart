@@ -135,6 +135,7 @@ class _PlayListBottomListViewState
                       song.title,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
+                      style: textTheme.labelLarge,
                     ),
                   ],
                 ),

@@ -48,9 +48,8 @@ class VideoTitle extends ConsumerWidget {
                   loading: () => AppConstants.loading,
                   error: (error, stackTrace) => AppConstants.noDescription,
                 ),
-                style: textTheme.bodySmall,
+                style: textTheme.labelMedium,
               ),
-            
             ],
           ),
         ),

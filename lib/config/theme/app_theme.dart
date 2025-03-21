@@ -73,6 +73,15 @@ class AppTheme {
         indicatorColor: AppColors.frenchWine,
       ),
       textTheme: Typography().white.copyWith(
+            bodyLarge: AppTextStyle.bodyLarge.copyWith(
+              color: AppColors.white,
+            ),
+            bodyMedium: AppTextStyle.bodyMedium.copyWith(
+              color: AppColors.white,
+            ),
+            bodySmall: AppTextStyle.bodySmall.copyWith(
+              color: AppColors.white,
+            ),
             displayLarge: AppTextStyle.displayLarge.copyWith(
               color: AppColors.white,
             ),
@@ -91,6 +100,15 @@ class AppTheme {
             headlineSmall: AppTextStyle.headlineSmall.copyWith(
               color: AppColors.white,
             ),
+            labelLarge: AppTextStyle.labelLarge.copyWith(
+              color: AppColors.coolGrey,
+            ),
+            labelMedium: AppTextStyle.labelMedium.copyWith(
+              color: AppColors.coolGrey,
+            ),
+            labelSmall: AppTextStyle.labelSmall.copyWith(
+              color: AppColors.coolGrey,
+            ),
             titleLarge: AppTextStyle.titleLarge.copyWith(
               color: AppColors.white,
             ),
@@ -98,15 +116,6 @@ class AppTheme {
               color: AppColors.white,
             ),
             titleSmall: AppTextStyle.titleSmall.copyWith(
-              color: AppColors.white,
-            ),
-            bodyLarge: AppTextStyle.bodyLarge.copyWith(
-              color: AppColors.white,
-            ),
-            bodyMedium: AppTextStyle.bodyMedium.copyWith(
-              color: AppColors.white,
-            ),
-            bodySmall: AppTextStyle.bodySmall.copyWith(
               color: AppColors.white,
             ),
           ),
@@ -176,6 +185,15 @@ class AppTheme {
         indicatorColor: AppColors.frenchWine,
       ),
       textTheme: Typography().black.copyWith(
+            bodyLarge: AppTextStyle.bodyLarge.copyWith(
+              color: AppColors.eerieBlack,
+            ),
+            bodyMedium: AppTextStyle.bodyMedium.copyWith(
+              color: AppColors.eerieBlack,
+            ),
+            bodySmall: AppTextStyle.bodySmall.copyWith(
+              color: AppColors.eerieBlack,
+            ),
             displayLarge: AppTextStyle.displayLarge.copyWith(
               color: AppColors.smokyBlack,
             ),
@@ -194,6 +212,15 @@ class AppTheme {
             headlineSmall: AppTextStyle.headlineSmall.copyWith(
               color: AppColors.smokyBlack,
             ),
+            labelLarge: AppTextStyle.labelLarge.copyWith(
+              color: AppColors.outerSpace,
+            ),
+            labelMedium: AppTextStyle.labelMedium.copyWith(
+              color: AppColors.outerSpace,
+            ),
+            labelSmall: AppTextStyle.labelSmall.copyWith(
+              color: AppColors.outerSpace,
+            ),
             titleLarge: AppTextStyle.titleLarge.copyWith(
               color: AppColors.smokyBlack,
             ),
@@ -202,15 +229,6 @@ class AppTheme {
             ),
             titleSmall: AppTextStyle.titleSmall.copyWith(
               color: AppColors.smokyBlack,
-            ),
-            bodyLarge: AppTextStyle.bodyLarge.copyWith(
-              color: AppColors.smokyBlack,
-            ),
-            bodyMedium: AppTextStyle.bodyMedium.copyWith(
-              color: AppColors.eerieBlack,
-            ),
-            bodySmall: AppTextStyle.bodySmall.copyWith(
-              color: AppColors.eerieBlack,
             ),
           ),
     );
