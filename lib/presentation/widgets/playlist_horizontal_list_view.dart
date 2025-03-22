@@ -130,6 +130,7 @@ class PlaylistHorizontalListView extends ConsumerWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       semanticsLabel: song.title,
+                      style: textTheme.labelLarge,
                     ),
                   ],
                 ),

@@ -29,7 +29,7 @@ class VideoControls extends ConsumerWidget {
         YoutubeValueBuilder(
           controller: videoPlayer.playerController,
           builder: (context, value) => IconButton.outlined(
-            iconSize: IconSize.extraLarge * 2,
+            iconSize: IconSize.extraLarge * 1.3,
             onPressed: () {
               if (value.playerState == PlayerState.paused ||
                   value.playerState == PlayerState.cued) {

@@ -107,32 +107,22 @@ class _AutoPlay extends ConsumerWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          AppConstants.upNextLabel,
-          style: textTheme.titleLarge,
-          semanticsLabel: AppConstants.upNextLabel,
+          AppConstants.autoplayLabel,
+          style: textTheme.titleMedium,
         ),
-        Row(
-          children: [
-            Text(
-              AppConstants.autoplayLabel,
-              style: textTheme.bodyLarge,
-            ),
-            Semantics(
-              label: SemanticLabels.autoplaySwitch,
-              child: Switch.adaptive(
-                value: ref.watch(autoplayProvider),
-                onChanged: (value) {
-                  ref.read(autoplayProvider.notifier).state = value;
-                  ref
-                      .read(sharedUtilityProvider)
-                      .setAutoplayEnabled(isAutoplayEnabled: value);
-                },
-              ),
-            ),
-          ],
+        Semantics(
+          label: SemanticLabels.autoplaySwitch,
+          child: Switch.adaptive(
+            value: ref.watch(autoplayProvider),
+            onChanged: (value) {
+              ref.read(autoplayProvider.notifier).state = value;
+              ref
+                  .read(sharedUtilityProvider)
+                  .setAutoplayEnabled(isAutoplayEnabled: value);
+            },
+          ),
         ),
       ],
     );
@@ -163,63 +153,36 @@ class _PlayerScaffoldBody extends ConsumerWidget {
             children: [
               VideoPlayer(videoPlayer: player),
               const SizedBox(height: Insets.medium),
-              VideoTitle(
-                band: currentSong.band,
-                title: currentSong.title,
+              _Controls(),
+              const SizedBox(height: Insets.medium),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: Insets.small),
+                child: VideoTitle(
+                  band: currentSong.band,
+                  title: currentSong.title,
+                ),
               ),
-              const SizedBox(height: Insets.large),
+              const SizedBox(height: Insets.medium),
               Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: Insets.small),
-                  child: Column(
-                    children: [
-                      Wrap(
-                        alignment: WrapAlignment.center,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        spacing: Insets.medium,
-                        children: [
-                          const VideoMetaDataInfo(),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              if (currentSong.trendType != null) ...[
-                                _TrendType(
-                                  type: currentSong.trendType!,
-                                ),
-                              ] else if (currentSong.position != null &&
-                                  isRankingEnabled == true) ...[
-                                _SongPosition(
-                                  position: currentSong.position!,
-                                )
-                              ],
-                              IconButton(
-                                onPressed: () {
-                                  Share.share(
-                                    currentSong.videoUrl,
-                                    subject:
-                                        '${currentSong.band} - ${currentSong.title}',
-                                  );
-                                },
-                                icon: const Icon(
-                                  Icons.share_outlined,
-                                  semanticLabel: SemanticLabels.shareSong,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: Insets.large),
-                      _PlaylistTitle(),
-                      const SizedBox(height: Insets.medium),
-                      const VideoControls(),
-                      const SizedBox(height: Insets.medium),
-                      _AutoPlay(),
-                      SizedBox(
-                        height: screenSize.width * 0.55,
-                        child: bottomWidget,
-                      ),
-                    ],
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: Insets.medium),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _VideoData(
+                          currentSong: currentSong,
+                          isRankingEnabled: isRankingEnabled,
+                        ),
+                        const SizedBox(height: Insets.medium),
+                        _PlaylistTitle(),
+                        SizedBox(
+                          height: screenSize.width * 0.6,
+                          child: bottomWidget,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -233,6 +196,82 @@ class _PlayerScaffoldBody extends ConsumerWidget {
   }
 }
 
+class _VideoData extends StatelessWidget {
+  const _VideoData({
+    required this.currentSong,
+    required this.isRankingEnabled,
+  });
+
+  final Song currentSong;
+  final bool isRankingEnabled;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const VideoMetaDataInfo(),
+        const SizedBox(width: Insets.medium),
+        if (currentSong.trendType != null) ...[
+          _TrendType(
+            type: currentSong.trendType!,
+          ),
+        ] else if (currentSong.position != null &&
+            isRankingEnabled == true) ...[
+          _SongPosition(
+            position: currentSong.position!,
+          )
+        ],
+        IconButton(
+          onPressed: () {
+            Share.share(
+              currentSong.videoUrl,
+              subject: '${currentSong.band} - ${currentSong.title}',
+            );
+          },
+          icon: const Icon(
+            Icons.share_outlined,
+            semanticLabel: SemanticLabels.shareSong,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _Controls extends ConsumerWidget {
+  const _Controls();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: Insets.small,
+          vertical: Insets.xsmall,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _AutoPlay(),
+            IconButton(
+              onPressed: () {
+                ref.read(videoPlayerProvider).fullScreen();
+              },
+              icon: const Icon(
+                Icons.fullscreen_outlined,
+                color: AppColors.white,
+                size: IconSize.extraLarge * 1.2,
+                semanticLabel: SemanticLabels.previousSong,
+              ),
+            ),
+            const VideoControls(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _PlaylistTitle extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -242,7 +281,7 @@ class _PlaylistTitle extends ConsumerWidget {
     return Text(
       currentPlaylist.name,
       semanticsLabel: '${SemanticLabels.playlist} ${currentPlaylist.name}',
-      style: textTheme.titleLarge,
+      style: textTheme.titleMedium,
       textAlign: TextAlign.center,
       textScaler: const TextScaler.linear(AppConstants.textScaleFactor),
     );
@@ -279,12 +318,12 @@ class _TrendType extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      label: Text(
-        type,
-        semanticsLabel: '${SemanticLabels.trendingType} $type',
-      ),
-      side: const BorderSide(color: AppColors.frenchWine),
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
+    return Text(
+      type,
+      semanticsLabel: '${SemanticLabels.trendingType} $type',
+      style: textTheme.titleMedium,
     );
   }
 }

@@ -14,7 +14,7 @@ class VideoPlayer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(AppConstants.mediumRadius),
+      borderRadius: BorderRadius.zero,
       child: Stack(
         alignment: Alignment.centerLeft,
         children: [

@@ -13,6 +13,22 @@ class AppTheme {
   static ThemeData dark() {
     return ThemeData(
       useMaterial3: true,
+      appBarTheme: AppBarTheme(
+        backgroundColor: AppColors.eerieBlack.withValues(alpha: 0.8),
+        systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
+          statusBarColor: AppColors.eerieBlack,
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: AppColors.eerieBlack,
+          systemNavigationBarIconBrightness: Brightness.light,
+        ),
+      ),
+      canvasColor: AppColors.smokyBlack.withValues(alpha: 0.7),
+      cardTheme: const CardTheme(
+        color: AppColors.smokyBlack,
+      ),
+      chipTheme: const ChipThemeData(
+        side: BorderSide.none,
+      ),
       colorScheme: const ColorScheme.dark(
         primary: AppColors.frenchWine,
         onPrimary: AppColors.white,
@@ -25,32 +41,25 @@ class AppTheme {
         surface: AppColors.eerieBlack,
         surfaceTint: AppColors.smokyBlack,
       ),
-      appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.smokyBlack.withValues(alpha: 0.8),
-        systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
-          statusBarColor: AppColors.smokyBlack,
-          statusBarIconBrightness: Brightness.light,
-          systemNavigationBarColor: AppColors.smokyBlack,
-          systemNavigationBarIconBrightness: Brightness.light,
-        ),
-      ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: AppColors.smokyBlack.withValues(alpha: 0.8),
-        elevation: 0.0,
-        selectedItemColor: AppColors.frenchWine,
-        selectedLabelStyle: AppTextStyle.bodyMedium.copyWith(
-          color: AppColors.frenchWine,
-        ),
-        showUnselectedLabels: false,
-        unselectedItemColor: AppColors.white,
-        type: BottomNavigationBarType.fixed,
-      ),
-      canvasColor: AppColors.smokyBlack.withValues(alpha: 0.7),
-      chipTheme: const ChipThemeData(
-        side: BorderSide.none,
-      ),
       dividerTheme: const DividerThemeData(
         color: AppColors.eerieBlack,
+      ),
+      expansionTileTheme: ExpansionTileThemeData(
+        expandedAlignment: Alignment.centerLeft,
+        tilePadding: EdgeInsets.symmetric(
+          horizontal: Insets.small,
+        ),
+        childrenPadding: EdgeInsets.symmetric(
+          horizontal: Insets.medium,
+        ),
+        collapsedShape: RoundedRectangleBorder(
+          side: BorderSide(color: AppColors.white),
+          borderRadius: BorderRadius.circular(Insets.small),
+        ),
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: AppColors.white),
+          borderRadius: BorderRadius.circular(Insets.small),
+        ),
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: AppColors.eerieBlack,
@@ -58,7 +67,21 @@ class AppTheme {
       ),
       fontFamily: 'Kollektif',
       iconTheme: const IconThemeData(color: AppColors.frenchWine),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: AppColors.eerieBlack,
+        elevation: 0.0,
+        indicatorColor: AppColors.frenchWine,
+      ),
       textTheme: Typography().white.copyWith(
+            bodyLarge: AppTextStyle.bodyLarge.copyWith(
+              color: AppColors.white,
+            ),
+            bodyMedium: AppTextStyle.bodyMedium.copyWith(
+              color: AppColors.white,
+            ),
+            bodySmall: AppTextStyle.bodySmall.copyWith(
+              color: AppColors.white,
+            ),
             displayLarge: AppTextStyle.displayLarge.copyWith(
               color: AppColors.white,
             ),
@@ -77,6 +100,15 @@ class AppTheme {
             headlineSmall: AppTextStyle.headlineSmall.copyWith(
               color: AppColors.white,
             ),
+            labelLarge: AppTextStyle.labelLarge.copyWith(
+              color: AppColors.coolGrey,
+            ),
+            labelMedium: AppTextStyle.labelMedium.copyWith(
+              color: AppColors.coolGrey,
+            ),
+            labelSmall: AppTextStyle.labelSmall.copyWith(
+              color: AppColors.coolGrey,
+            ),
             titleLarge: AppTextStyle.titleLarge.copyWith(
               color: AppColors.white,
             ),
@@ -86,15 +118,6 @@ class AppTheme {
             titleSmall: AppTextStyle.titleSmall.copyWith(
               color: AppColors.white,
             ),
-            bodyLarge: AppTextStyle.bodyLarge.copyWith(
-              color: AppColors.white,
-            ),
-            bodyMedium: AppTextStyle.bodyMedium.copyWith(
-              color: AppColors.coolGrey,
-            ),
-            bodySmall: AppTextStyle.bodySmall.copyWith(
-              color: AppColors.coolGrey,
-            ),
           ),
     );
   }
@@ -102,6 +125,22 @@ class AppTheme {
   static ThemeData light() {
     return ThemeData(
       useMaterial3: true,
+      appBarTheme: AppBarTheme(
+        backgroundColor: AppColors.white.withValues(alpha: 0.8),
+        systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
+          statusBarColor: AppColors.white,
+          statusBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: AppColors.white,
+          systemNavigationBarIconBrightness: Brightness.dark,
+        ),
+      ),
+      canvasColor: AppColors.white.withValues(alpha: 0.7),
+      cardTheme: const CardTheme(
+        color: AppColors.white,
+      ),
+      chipTheme: const ChipThemeData(
+        side: BorderSide.none,
+      ),
       colorScheme: const ColorScheme.light(
         primary: AppColors.frenchWine,
         onPrimary: AppColors.smokyBlack,
@@ -114,32 +153,25 @@ class AppTheme {
         surface: AppColors.white,
         surfaceTint: AppColors.white,
       ),
-      appBarTheme: AppBarTheme(
-        backgroundColor: AppColors.white.withValues(alpha: 0.9),
-        systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
-          statusBarColor: AppColors.white,
-          statusBarIconBrightness: Brightness.dark,
-          systemNavigationBarColor: AppColors.white,
-          systemNavigationBarIconBrightness: Brightness.dark,
-        ),
-      ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: AppColors.white.withValues(alpha: 0.8),
-        elevation: 0.0,
-        selectedItemColor: AppColors.frenchWine,
-        selectedLabelStyle: AppTextStyle.bodyMedium.copyWith(
-          color: AppColors.frenchWine,
-        ),
-        showUnselectedLabels: false,
-        unselectedItemColor: AppColors.smokyBlack,
-        type: BottomNavigationBarType.fixed,
-      ),
-      canvasColor: AppColors.white.withValues(alpha: 0.7),
-      chipTheme: const ChipThemeData(
-        side: BorderSide.none,
-      ),
       dividerTheme: const DividerThemeData(
         color: AppColors.eerieBlack,
+      ),
+      expansionTileTheme: ExpansionTileThemeData(
+        expandedAlignment: Alignment.centerLeft,
+        tilePadding: EdgeInsets.symmetric(
+          horizontal: Insets.small,
+        ),
+        childrenPadding: EdgeInsets.symmetric(
+          horizontal: Insets.medium,
+        ),
+        collapsedShape: RoundedRectangleBorder(
+          side: BorderSide(color: AppColors.outerSpace),
+          borderRadius: BorderRadius.circular(Insets.small),
+        ),
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: AppColors.outerSpace),
+          borderRadius: BorderRadius.circular(Insets.small),
+        ),
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: AppColors.white,
@@ -147,7 +179,21 @@ class AppTheme {
       ),
       fontFamily: 'Kollektif',
       iconTheme: const IconThemeData(color: AppColors.oldMauve),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: AppColors.white,
+        elevation: 0.0,
+        indicatorColor: AppColors.frenchWine,
+      ),
       textTheme: Typography().black.copyWith(
+            bodyLarge: AppTextStyle.bodyLarge.copyWith(
+              color: AppColors.eerieBlack,
+            ),
+            bodyMedium: AppTextStyle.bodyMedium.copyWith(
+              color: AppColors.eerieBlack,
+            ),
+            bodySmall: AppTextStyle.bodySmall.copyWith(
+              color: AppColors.eerieBlack,
+            ),
             displayLarge: AppTextStyle.displayLarge.copyWith(
               color: AppColors.smokyBlack,
             ),
@@ -166,6 +212,15 @@ class AppTheme {
             headlineSmall: AppTextStyle.headlineSmall.copyWith(
               color: AppColors.smokyBlack,
             ),
+            labelLarge: AppTextStyle.labelLarge.copyWith(
+              color: AppColors.outerSpace,
+            ),
+            labelMedium: AppTextStyle.labelMedium.copyWith(
+              color: AppColors.outerSpace,
+            ),
+            labelSmall: AppTextStyle.labelSmall.copyWith(
+              color: AppColors.outerSpace,
+            ),
             titleLarge: AppTextStyle.titleLarge.copyWith(
               color: AppColors.smokyBlack,
             ),
@@ -174,15 +229,6 @@ class AppTheme {
             ),
             titleSmall: AppTextStyle.titleSmall.copyWith(
               color: AppColors.smokyBlack,
-            ),
-            bodyLarge: AppTextStyle.bodyLarge.copyWith(
-              color: AppColors.smokyBlack,
-            ),
-            bodyMedium: AppTextStyle.bodyMedium.copyWith(
-              color: AppColors.outerSpace,
-            ),
-            bodySmall: AppTextStyle.bodyMedium.copyWith(
-              color: AppColors.outerSpace,
             ),
           ),
     );

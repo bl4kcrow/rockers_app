@@ -20,7 +20,9 @@ final appRouter = GoRouter(
           path: Routes.videoPlaybackScreen,
           name: Routes.videoPlaybackScreen,
           builder: (context, state) {
-            Map<String, Object> args = state.extra as Map<String, Object>;
+            Map<String, Object> args = state.extra != null
+                ? state.extra as Map<String, Object>
+                : {'bottomWidget': const Spacer()};
 
             return VideoPlaybackScreen(
               bottomWidget: args['bottomWidget'] as Widget,

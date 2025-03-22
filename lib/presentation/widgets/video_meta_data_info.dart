@@ -16,12 +16,6 @@ class VideoMetaDataInfo extends ConsumerWidget {
 
     return Column(
       children: [
-        Text(
-          AppConstants.infoLabel,
-          textAlign: TextAlign.center,
-          semanticsLabel: AppConstants.infoLabel,
-          style: textTheme.titleLarge,
-        ),
         videoMetaData.when(
           skipLoadingOnRefresh: false,
           data: (metaData) {
@@ -35,7 +29,7 @@ class VideoMetaDataInfo extends ConsumerWidget {
                       AppConstants.viewsLabel,
                       textAlign: TextAlign.center,
                       semanticsLabel: AppConstants.viewsLabel,
-                      style: textTheme.titleLarge,
+                      style: textTheme.titleMedium,
                     ),
                     Text(
                       NumberFormat.compact().format(metaData.views),
@@ -52,7 +46,7 @@ class VideoMetaDataInfo extends ConsumerWidget {
                       AppConstants.durationLabel,
                       textAlign: TextAlign.center,
                       semanticsLabel: AppConstants.durationLabel,
-                      style: textTheme.titleLarge,
+                      style: textTheme.titleMedium,
                     ),
                     Text(
                       metaData.duration.toMinutesSeconds(),

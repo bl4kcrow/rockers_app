@@ -14,11 +14,13 @@ class AppConstants {
       
   // Texts Constants
   static const String appVersionLabel = 'Version 2.0.0';
-  static const String autoplayLabel = 'AUTOPLAY';
+  static const String autoplayLabel = 'Autoplay';
   static const String bl4kcrowCopyright = '© Bl4kcrow Studios';
   static const String durationLabel = 'Duration';
   static const String infoLabel = 'Info';
   static const String letTheRockLabel = 'Let the rock take your soul';
+  static const String loading = 'Loading...';
+  static const String noDescription = 'No description';
   static const String playlistsLabel = 'Playlists';
   static const String rockers = 'Rockers';
   static const String spreadingRockLabel =

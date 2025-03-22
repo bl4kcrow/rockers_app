@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:rockers_app/config/config.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
 
 import 'package:rockers_app/domain/domain.dart';
@@ -14,20 +15,23 @@ class VideoMetaDataNotifier extends AsyncNotifier<VideoMetaData> {
       VideoMetaData(
         views: 0,
         duration: Duration.zero,
+        description: AppConstants.noDescription,
       ),
     );
   }
 
   Future<void> fetchVideoMetaData(String videoId) async {
-    final videoExplode = await YoutubeExplode().videos.get(videoId);
+    final youtubeExplode = YoutubeExplode();
+    final videoExplode = await youtubeExplode.videos.get(videoId);
+    youtubeExplode.close();
 
     await update(
       (currentState) => VideoMetaData(
         views: videoExplode.engagement.viewCount,
         duration: videoExplode.duration ?? Duration.zero,
+        description: videoExplode.description,
       ),
     );
 
-    YoutubeExplode().close();
   }
 }
