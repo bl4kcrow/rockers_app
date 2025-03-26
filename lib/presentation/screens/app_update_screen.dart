@@ -2,9 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:rockers_app/config/config.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppUpdateScreen extends ConsumerWidget {
   const AppUpdateScreen({super.key});
+
+  void _launchAppPlayStore() {
+    final url = Uri.parse('market://details?id=${AppConstants.playStoreAppId}');
+
+    launchUrl(
+      url,
+      mode: LaunchMode.externalApplication,
+    );
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,7 +49,7 @@ class AppUpdateScreen extends ConsumerWidget {
               child: SizedBox(
                 width: screenSize.width * 0.6,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: _launchAppPlayStore,
                   child: const Text(AppConstants.updateNowLabel),
                 ),
               ),

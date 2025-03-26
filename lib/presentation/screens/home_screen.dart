@@ -55,7 +55,13 @@ class HomeScreen extends ConsumerWidget {
                     extendBody: true,
                     extendBodyBehindAppBar: true,
                   ),
-        error: (_, __) => Text('Error'),
+        error: (_, __) => Scaffold(
+          body: Center(
+            child: Text(
+              AppConstants.errorLoadingTheApp,
+            ),
+          ),
+        ),
         loading: () => Scaffold(
           body: Center(
             child: CircularProgressIndicator.adaptive(),

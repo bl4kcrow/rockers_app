@@ -1,4 +1,3 @@
-export 'providers/app_info_provider.dart';
 export 'providers/app_versioning_provider.dart';
 export 'providers/autoplay_provider.dart';
 export 'providers/current_song_provider.dart';

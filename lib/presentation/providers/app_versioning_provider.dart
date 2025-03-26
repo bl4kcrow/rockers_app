@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:pub_semver/pub_semver.dart';
+
 import 'package:rockers_app/config/utils/app_update_status.dart';
 import 'package:rockers_app/domain/domain.dart';
 import 'package:rockers_app/presentation/presentation.dart';
@@ -22,6 +23,7 @@ class AppVersioningNotifier extends AsyncNotifier<AppVersioning> {
 
     final packageInfo = await PackageInfo.fromPlatform();
     final currentVersion = packageInfo.version;
+    final buildNumber = packageInfo.buildNumber;
 
     AppUpdateStatus updateStatus = AppUpdateStatus.noUpdate;
 
@@ -31,7 +33,7 @@ class AppVersioningNotifier extends AsyncNotifier<AppVersioning> {
       final parsedCurrentVersion = Version.parse(currentVersion);
       final parsedMinimumVersion = Version.parse(remoteMinimumVersion);
       final parsedRecommendedVersion = Version.parse(remoteRecommendedVersion);
-      
+
       if (parsedCurrentVersion < parsedMinimumVersion) {
         updateStatus = AppUpdateStatus.mandatory;
       } else if (parsedCurrentVersion < parsedRecommendedVersion) {
@@ -40,9 +42,11 @@ class AppVersioningNotifier extends AsyncNotifier<AppVersioning> {
     }
 
     return AppVersioning(
-        currentVersion: currentVersion,
-        remoteMinimumVersion: remoteMinimumVersion,
-        remoteRecommendedVersion: remoteRecommendedVersion,
-        updateStatus: updateStatus);
+      buildNumber: buildNumber,
+      currentVersion: currentVersion,
+      remoteMinimumVersion: remoteMinimumVersion,
+      remoteRecommendedVersion: remoteRecommendedVersion,
+      updateStatus: updateStatus,
+    );
   }
 }
