@@ -26,7 +26,11 @@ class AppConstants {
   static const String spreadingRockLabel =
       'Spreading with passion the rock sounds';
   static const String trendingLabel = 'Trending';
-  static const String upNextLabel = 'Up next';
+  static const String updateAppLabel =
+      'Update your\napplication to the\nlatest version';
+  static const String updateAppText =
+      'A new version of the Rockers app\nis available. Please update your app\nto continue using it.';
+  static const String updateNowLabel = 'Update Now';
   static const String viewsLabel = 'Views';
 
   // Util constants

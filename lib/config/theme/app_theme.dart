@@ -44,6 +44,12 @@ class AppTheme {
       dividerTheme: const DividerThemeData(
         color: AppColors.eerieBlack,
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.all<Color>(AppColors.white),
+          foregroundColor: WidgetStateProperty.all<Color>(AppColors.smokyBlack),
+        ),
+      ),
       expansionTileTheme: ExpansionTileThemeData(
         expandedAlignment: Alignment.centerLeft,
         tilePadding: EdgeInsets.symmetric(
@@ -155,6 +161,12 @@ class AppTheme {
       ),
       dividerTheme: const DividerThemeData(
         color: AppColors.eerieBlack,
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.all<Color>(AppColors.smokyBlack),
+          foregroundColor: WidgetStateProperty.all<Color>(AppColors.white),
+        ),
       ),
       expansionTileTheme: ExpansionTileThemeData(
         expandedAlignment: Alignment.centerLeft,
