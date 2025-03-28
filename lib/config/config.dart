@@ -12,7 +12,9 @@ export 'theme/app_text_style.dart';
 export 'theme/app_theme_provider.dart';
 export 'theme/app_theme.dart';
 
+export 'utils/app_update_status.dart';
 export 'utils/format_duration.dart';
+export 'utils/launch_app_play_store.dart';
 export 'utils/trend_type.dart';
 
 export 'widgets/app_navigation_bar.dart';

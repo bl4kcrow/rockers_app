@@ -45,6 +45,7 @@ class _TrendingScreenState extends ConsumerState<TrendingView> {
   Widget build(BuildContext context) {
     final List<Trending> trending = ref.watch(trendingProvider);
     final isDarkMode = ref.watch(appThemeProvider).isDarkMode;
+    AsyncValue<AppVersioning> appVersioning = ref.watch(appVersioningProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -62,6 +63,24 @@ class _TrendingScreenState extends ConsumerState<TrendingView> {
             },
           ),
         ],
+        bottom: appVersioning.when(
+          data: (appVersioning) {
+            if (appVersioning.updateStatus == AppUpdateStatus.optional) {
+              return PreferredSize(
+                preferredSize: Size.fromHeight(56.0),
+                child: OptionalAppUpdateCard(),
+              );
+            } else {
+              return null;
+            }
+          },
+          error: (error, stack) {
+            return null;
+          },
+          loading: () {
+            return null;
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: Insets.medium),

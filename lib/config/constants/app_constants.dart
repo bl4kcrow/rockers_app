@@ -13,20 +13,27 @@ class AppConstants {
   static const String sharedDarkModeKey = 'sharedDarkModeKey';
       
   // Texts Constants
-  static const String appVersionLabel = 'Version 2.0.0';
   static const String autoplayLabel = 'Autoplay';
   static const String bl4kcrowCopyright = '© Bl4kcrow Studios';
   static const String durationLabel = 'Duration';
+  static const String errorLoadingTheApp =
+      'Apologies😖,\nthere was an error loading the App,\nplease, close and open it again.';
   static const String infoLabel = 'Info';
   static const String letTheRockLabel = 'Let the rock take your soul';
   static const String loading = 'Loading...';
   static const String noDescription = 'No description';
+  static const String optionalAppUpdate = 'There is an available App update';
   static const String playlistsLabel = 'Playlists';
+  static const String playStoreAppId = 'com.bl4ckcrow.rockers';
   static const String rockers = 'Rockers';
   static const String spreadingRockLabel =
       'Spreading with passion the rock sounds';
   static const String trendingLabel = 'Trending';
-  static const String upNextLabel = 'Up next';
+  static const String updateAppLabel =
+      'Update your\napplication to the\nlatest version';
+  static const String updateAppText =
+      'A new version of the Rockers app\nis available. Please update the app\nto continue using it.';
+  static const String updateNowLabel = 'Update Now';
   static const String viewsLabel = 'Views';
 
   // Util constants
