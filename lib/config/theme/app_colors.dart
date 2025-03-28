@@ -9,4 +9,5 @@ class AppColors {
   static const outerSpace = Color(0xFF464646);
   static const coolGrey = Color(0xFF7B8794);
   static const white = Color(0xFFFEFEFE);
+  static const ripeMango = Color(0xFFFFCA27);
 }

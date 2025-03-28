@@ -22,6 +22,7 @@ class AppConstants {
   static const String letTheRockLabel = 'Let the rock take your soul';
   static const String loading = 'Loading...';
   static const String noDescription = 'No description';
+  static const String optionalAppUpdate = 'There is an available App update';
   static const String playlistsLabel = 'Playlists';
   static const String playStoreAppId = 'com.bl4ckcrow.rockers';
   static const String rockers = 'Rockers';

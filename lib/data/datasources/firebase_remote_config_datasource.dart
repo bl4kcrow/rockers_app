@@ -16,7 +16,7 @@ class FirebaseRemoteConfigDatasource implements RemoteConfigDatasource {
 
     await remoteConfig.setDefaults({
       'requiredMinimumVersion': '2.2.0',
-      'recommendedMinimumVersion': '2.0.0',
+      'recommendedMinimumVersion': '2.2.0',
     });
 
     await remoteConfig.fetchAndActivate();

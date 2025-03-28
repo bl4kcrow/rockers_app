@@ -19,6 +19,7 @@ export 'screens/app_update_screen.dart';
 export 'screens/home_screen.dart';
 export 'screens/video_playback_screen.dart';
 
+export 'widgets/optional_app_update_card.dart';
 export 'widgets/playlist_bottom_list_view.dart';
 export 'widgets/playlist_horizontal_list_view.dart';
 export 'widgets/thumbnail_image.dart';
