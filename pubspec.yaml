@@ -1,7 +1,7 @@
 name: rockers_app
 description: Rockers Rock Music App
 publish_to: "none"
-version: 2.1.1+7
+version: 2.2.0+8
 
 environment:
   sdk: ">=3.0.5 <4.0.0"
