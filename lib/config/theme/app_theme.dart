@@ -23,7 +23,7 @@ class AppTheme {
         ),
       ),
       canvasColor: AppColors.smokyBlack.withValues(alpha: 0.7),
-      cardTheme: const CardTheme(
+      cardTheme: const CardThemeData(
         color: AppColors.smokyBlack,
       ),
       chipTheme: const ChipThemeData(
@@ -141,7 +141,7 @@ class AppTheme {
         ),
       ),
       canvasColor: AppColors.white.withValues(alpha: 0.7),
-      cardTheme: const CardTheme(
+      cardTheme: const CardThemeData(
         color: AppColors.white,
       ),
       chipTheme: const ChipThemeData(
