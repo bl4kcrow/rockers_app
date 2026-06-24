@@ -6,7 +6,7 @@
 
 | Phase | Name | Status | Plans | Progress |
 |-------|------|--------|-------|----------|
-| 1 | youtube_player_iframe Upgrade | ○ | 0/0 | 0% |
+| 1 | youtube_player_iframe Upgrade | ○ | 1/0 | 0% |
 
 ---
 
@@ -29,7 +29,12 @@
 - DEP-06 → Plan 1
 - DEP-07 → Plan 1
 
+**Plans:** 1 plan
+
+Plans:
+- [ ] 01-01-PLAN.md — Upgrade youtube_player_iframe to v6: dependency bump, compiler-guided migration of 5 files, flutter analyze pass, manual device verification
+
 ---
 
 *Roadmap created: 2026-06-24*
-*Next action: /gsd-plan-phase 1*
+*Next action: /gsd-execute-phase 01*
