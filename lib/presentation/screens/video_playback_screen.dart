@@ -44,8 +44,6 @@ class _VideoPlaybackScreenState extends ConsumerState<VideoPlaybackScreen> {
         }
       },
     );
-
-
   }
 
   @override
