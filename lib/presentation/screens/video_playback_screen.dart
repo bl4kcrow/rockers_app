@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:share_plus/share_plus.dart';
@@ -46,14 +45,7 @@ class _VideoPlaybackScreenState extends ConsumerState<VideoPlaybackScreen> {
       },
     );
 
-    playerProvider.playerController.setFullScreenListener((isFullscreen) {
-      if (isFullscreen == false) {
-        SystemChrome.setEnabledSystemUIMode(
-          SystemUiMode.manual,
-          overlays: SystemUiOverlay.values,
-        );
-      }
-    });
+
   }
 
   @override
@@ -80,21 +72,13 @@ class _VideoPlaybackScreenState extends ConsumerState<VideoPlaybackScreen> {
         ref.invalidate(videoPlayerProvider);
       },
       child: SafeArea(
-        child: YoutubePlayerScaffold(
-          autoFullScreen: true,
-          controller: playerProvider.playerController,
-          defaultOrientations: const [
-            DeviceOrientation.portraitUp,
-            DeviceOrientation.portraitDown,
-          ],
-          builder: (context, videoPlayer) {
-            return Scaffold(
-              body: _PlayerScaffoldBody(
-                bottomWidget: widget.bottomWidget,
-                player: videoPlayer,
-              ),
-            );
-          },
+        child: Scaffold(
+          body: _PlayerScaffoldBody(
+            bottomWidget: widget.bottomWidget,
+            player: YoutubePlayer(
+              controller: playerProvider.playerController,
+            ),
+          ),
         ),
       ),
     );
