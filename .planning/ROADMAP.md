@@ -2,39 +2,26 @@
 
 **Created:** 2026-06-24
 
-## Phase Overview
+## Milestones
 
-| Phase | Name | Status | Plans | Progress |
-|-------|------|--------|-------|----------|
-| 1 | youtube_player_iframe Upgrade | ○ | 1/0 | 0% |
+- ✅ **v1.0** — youtube_player_iframe Upgrade (shipped 2026-06-24)
 
----
+## Phases
 
-### Phase 1: youtube_player_iframe Upgrade
-**Goal:** Upgrade youtube_player_iframe from 5.2.1 to 6.0.2 with full code migration and verify app stability
-**Mode:** mvp
-**Success Criteria**:
-1. pubspec.yaml updated to `^6.0.2` and `flutter pub get` succeeds
-2. All `YoutubePlayerScaffold` references migrated to direct `YoutubePlayer` usage
-3. Deprecated options removed, fullscreen behavior verified
-4. `flutter analyze` passes with 0 errors
-5. Video playback, controls, autoplay, and fullscreen work correctly
+<details>
+<summary>✅ v1.0 — youtube_player_iframe Upgrade (Phase 1) — SHIPPED 2026-06-24</summary>
 
-**Requirements mapped**:
-- DEP-01 → Plan 1
-- DEP-02 → Plan 1
-- DEP-03 → Plan 1
-- DEP-04 → Plan 1
-- DEP-05 → Plan 1
-- DEP-06 → Plan 1
-- DEP-07 → Plan 1
+- [x] Phase 1: youtube_player_iframe Upgrade (1/1 plans) — completed 2026-06-24
 
-**Plans:** 1 plan
+</details>
 
-Plans:
-- [ ] 01-01-PLAN.md — Upgrade youtube_player_iframe to v6: dependency bump, compiler-guided migration of 5 files, flutter analyze pass, manual device verification
+## Progress
+
+| Phase | Milestone | Plans Complete | Status | Completed |
+|-------|-----------|---------------|--------|-----------|
+| 1. youtube_player_iframe Upgrade | v1.0 | 1/1 | Complete | 2026-06-24 |
 
 ---
 
 *Roadmap created: 2026-06-24*
-*Next action: /gsd-execute-phase 01*
+*Last updated: 2026-06-29 after v1.0 archive*
