@@ -5,8 +5,8 @@ milestone_name: youtube_player_iframe Upgrade
 current_phase: 01
 current_plan: Completed
 status: Milestone archived
-stopped_at: v1.0 milestone completed and archived — ready for next milestone
-last_updated: "2026-06-29T20:51:00.000Z"
+stopped_at: Phase 1 shipped — branch pushed to origin
+last_updated: "2026-06-29T20:55:00.000Z"
 progress:
   total_phases: 1
   completed_phases: 1
