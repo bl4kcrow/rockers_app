@@ -235,17 +235,6 @@ class _Controls extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _AutoPlay(),
-            IconButton(
-              onPressed: () {
-                ref.read(videoPlayerProvider).fullScreen();
-              },
-              icon: const Icon(
-                Icons.fullscreen_outlined,
-                color: AppColors.white,
-                size: IconSize.extraLarge * 1.2,
-                semanticLabel: SemanticLabels.previousSong,
-              ),
-            ),
             const VideoControls(),
           ],
         ),
