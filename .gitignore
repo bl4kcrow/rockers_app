@@ -27,6 +27,10 @@ GoogleService-info.plist
 # is commented out by default.
 .vscode/
 
+# AI related
+.agents
+.opencode
+
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
